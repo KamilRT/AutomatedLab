@@ -565,9 +565,9 @@ else {
 }
 
 if ($Clients.IsPresent) {
-    $ClientOSVersions = (Get-LabAvailableOperatingSystem | where OperatingSystemName -eq $ClientOSEdition | sort -Property Version -Descending -Unique)
-    $PC2ClientOSVersion = if ($PC2OlderOS.IsPresent) { ($ClientOSVersions | select -Index (1-($ClientOSVersions.Legth))).Version } else { ($ClientOSVersions | select -Index 0).Version }
-    Add-LabMachineDefinition -Name ($LabName+"_"+"PC1") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion ($ClientOSVersions | select -Index 0).Version
+    $ClientOSVersions = (Get-LabAvailableOperatingSystem | Where-Object OperatingSystemName -eq $ClientOSEdition | Sort-Object -Property Version -Descending -Unique)
+    $PC2ClientOSVersion = if ($PC2OlderOS.IsPresent) { ($ClientOSVersions | Select-Object -Index (1-($ClientOSVersions.Legth))).Version } else { ($ClientOSVersions | Select-Object -Index 0).Version }
+    Add-LabMachineDefinition -Name ($LabName+"_"+"PC1") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion ($ClientOSVersions | Select-Object -Index 0).Version
     Add-LabMachineDefinition -Name ($LabName+"_"+"PC2") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion $PC2ClientOSVersion
 }
 #endregion
