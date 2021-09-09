@@ -89,6 +89,12 @@
     You cannot use this parameter with -ExternalVMSwitchName.
 .PARAMETER AutoLogon
     Specify this to enable auto logon for all VMs in this lab.
+.PARAMETER Clients
+    Specify this to create VMs with Windows 10
+.PARAMETER ClientOSEdition
+    Specify Client OS for clients if deployed
+.PARAMETER PC2OlderOS
+    Specify this to select N-1 OS version for the second client PC
 .EXAMPLE
     PS C:\> .\CM-2103.ps1 
 
@@ -122,6 +128,13 @@
                 - Version: "Latest"
                 - LogViewer: "OneTrace"
                 - Site system roles: MP, DP, SUP (inc WSUS), RSP, EP
+        - 2x client virtual machines (optional):
+            - Operating System: Windows 10 Enterprise
+            - 1x PC1 - domain joined:
+                - Name: "PC1"
+                - vCPU: 2
+                - Max memory: 4GB
+                - Disks: 1 x 100GB (OS, Dynamic) 
 
     The following customisations are applied to the ConfigMgr server post install:
         - The ConfigMgr console is updated
@@ -320,7 +333,22 @@ Param (
     [Switch]$NoInternetAccess,
 
     [Parameter()]
-    [Switch]$AutoLogon
+    [Switch]$AutoLogon,
+
+    [Parameter()]
+    [Switch]$Clients,
+    
+    [Parameter()]
+    [ValidateSet(
+        "Windows 10 Enterprise",
+        "Windows 10 Pro",
+        "Windows 10 Education",
+        "Windows 10 Pro Education"
+    )]
+    [String]$ClientOSEdition = "Windows 10 Enterprise",
+
+    [Parameter()]
+    [Switch]$PC2OlderOS
 )
 
 #region New-LabDefinition
@@ -343,8 +371,8 @@ $PSDefaultParameterValues = @{
     'Add-LabMachineDefinition:DomainName'      = $Domain
     'Add-LabMachineDefinition:Network'         = $LabName
     'Add-LabMachineDefinition:ToolsPath'       = "{0}\Tools" -f $labSources
-    'Add-LabMachineDefinition:MinMemory'       = 1GB
-    'Add-LabMachineDefinition:Memory'          = 2GB
+    'Add-LabMachineDefinition:MinMemory'       = 2GB
+    'Add-LabMachineDefinition:Memory'          = 4GB
 }
 
 if ($AutoLogon.IsPresent) {
@@ -489,7 +517,7 @@ if (-not $NoInternetAccess.IsPresent) {
     $Roles += "Routing"
 }
 
-Add-LabMachineDefinition -Name $DCHostname -Processors $DCCPU -Roles $Roles -NetworkAdapter $netAdapter -MaxMemory $DCMemory
+Add-LabMachineDefinition -Name ($LabName+"_"+$DCHostname) -Processors $DCCPU -Roles $Roles -NetworkAdapter $netAdapter -MaxMemory $DCMemory
 
 Add-LabIsoImageDefinition -Name SQLServer2017 -Path $SQLServer2017ISO
 
@@ -502,7 +530,7 @@ Add-LabDiskDefinition -Name $DataDisk -DiskSizeInGb 50 -Label "DATA01" -DriveLet
 Add-LabDiskDefinition -Name $SQLDisk -DiskSizeInGb 30 -Label "SQL01" -DriveLetter "F"
 
 if ($ExcludePostInstallations.IsPresent) {
-    Add-LabMachineDefinition -Name $CMHostname -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk
+    Add-LabMachineDefinition -Name ($LabName+"_"+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk
 }
 else {
     $CMRole = Get-LabPostInstallationActivity -CustomRole "CM-2103" -Properties @{
@@ -533,7 +561,14 @@ else {
         AdminPass           = $AdminPass
     }
 
-    Add-LabMachineDefinition -Name $CMHostname -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk -PostInstallationActivity $CMRole
+    Add-LabMachineDefinition -Name ($LabName+"_"+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk -PostInstallationActivity $CMRole
+}
+
+if ($Clients.IsPresent) {
+    $ClientOSVersions = (Get-LabAvailableOperatingSystem | where OperatingSystemName -eq $ClientOSEdition | sort -Property Version -Descending -Unique)
+    $PC2ClientOSVersion = if ($PC2OlderOS.IsPresent) { ($ClientOSVersions | select -Index (1-($ClientOSVersions.Legth))).Version } else { ($ClientOSVersions | select -Index 0).Version }
+    Add-LabMachineDefinition -Name ($LabName+"_"+"PC1") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion ($ClientOSVersions | select -Index 0).Version
+    Add-LabMachineDefinition -Name ($LabName+"_"+"PC2") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion $PC2ClientOSVersion
 }
 #endregion
 
