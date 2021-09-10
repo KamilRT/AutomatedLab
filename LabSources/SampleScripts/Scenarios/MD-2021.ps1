@@ -517,7 +517,7 @@ if (-not $NoInternetAccess.IsPresent) {
     $Roles += "Routing"
 }
 
-Add-LabMachineDefinition -Name ($LabName+"-"+$DCHostname) -Processors $DCCPU -Roles $Roles -NetworkAdapter $netAdapter -MaxMemory $DCMemory
+Add-LabMachineDefinition -Name ($LabName+$DCHostname) -Processors $DCCPU -Roles $Roles -NetworkAdapter $netAdapter -MaxMemory $DCMemory
 
 Add-LabIsoImageDefinition -Name SQLServer2017 -Path $SQLServer2017ISO
 
@@ -530,7 +530,7 @@ Add-LabDiskDefinition -Name $DataDisk -DiskSizeInGb 50 -Label "DATA01" -DriveLet
 Add-LabDiskDefinition -Name $SQLDisk -DiskSizeInGb 30 -Label "SQL01" -DriveLetter "F"
 
 if ($ExcludePostInstallations.IsPresent) {
-    Add-LabMachineDefinition -Name ($LabName+"-"+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk
+    Add-LabMachineDefinition -Name ($LabName+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk
 }
 else {
     $CMRole = Get-LabPostInstallationActivity -CustomRole "CM-2103" -Properties @{
@@ -561,14 +561,14 @@ else {
         AdminPass           = $AdminPass
     }
 
-    Add-LabMachineDefinition -Name ($LabName+"-"+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk -PostInstallationActivity $CMRole
+    Add-LabMachineDefinition -Name ($LabName+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk -PostInstallationActivity $CMRole
 }
 
 if ($Clients.IsPresent) {
     $ClientOSVersions = (Get-LabAvailableOperatingSystem | Where-Object OperatingSystemName -eq $ClientOSEdition | Sort-Object -Property Version -Descending -Unique)
     $PC2ClientOSVersion = if ($PC2OlderOS.IsPresent) { ($ClientOSVersions | Select-Object -Index (1-($ClientOSVersions.Legth))).Version } else { ($ClientOSVersions | Select-Object -Index 0).Version }
-    Add-LabMachineDefinition -Name ($LabName+"-"+"PC1") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion ($ClientOSVersions | Select-Object -Index 0).Version
-    Add-LabMachineDefinition -Name ($LabName+"-"+"PC2") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion $PC2ClientOSVersion
+    Add-LabMachineDefinition -Name ($LabName+"PC1") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion ($ClientOSVersions | Select-Object -Index 0).Version
+    Add-LabMachineDefinition -Name ($LabName+"PC2") -Processors 2 -MaxMemory 4GB -OperatingSystem $ClientOSEdition -OperatingSystemVersion $PC2ClientOSVersion
 }
 #endregion
 
