@@ -564,6 +564,8 @@ else {
     Add-LabMachineDefinition -Name ($LabName+$CMHostname) -Processors $CMCPU -Roles $sqlRole -MaxMemory $CMMemory -DiskName $DataDisk, $SQLDisk -PostInstallationActivity $CMRole
 }
 
+    Add-LabMachineDefinition -Name ($LabName+"SRV1") -Processors 2 -MaxMemory 4GB
+
 if ($Clients.IsPresent) {
     $ClientOSVersions = (Get-LabAvailableOperatingSystem | Where-Object OperatingSystemName -eq $ClientOSEdition | Sort-Object -Property Version -Descending -Unique)
     $PC2ClientOSVersion = if ($PC2OlderOS.IsPresent) { ($ClientOSVersions | Select-Object -Index (1-($ClientOSVersions.Legth))).Version } else { ($ClientOSVersions | Select-Object -Index 0).Version }
