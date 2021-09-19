@@ -120,7 +120,7 @@
                 - Name: "CM01"
                 - vCPU: 4
                 - Max memory: 10GB
-                - Disks: 1 x 100GB (OS, dynamic), 1x 30GB (SQL, dynamic), 1x 50GB (DATA, dynamic)
+                - Disks: 1 x 100GB (OS, dynamic), 1x 30GB (SQL, dynamic), 1x 100GB (DATA, dynamic)
                 - Roles: "SQLServer2017"
                 - CustomRoles: "CM-2103"
                 - SiteCode: "P01"
@@ -128,13 +128,21 @@
                 - Version: "Latest"
                 - LogViewer: "OneTrace"
                 - Site system roles: MP, DP, SUP (inc WSUS), RSP, EP
-        - 2x client virtual machines (optional):
-            - Operating System: Windows 10 Enterprise
-            - 1x PC1 - domain joined:
-                - Name: "PC1"
-                - vCPU: 2
-                - Max memory: 4GB
-                - Disks: 1 x 100GB (OS, Dynamic) 
+                - WADK 2004
+            - 2x client virtual machines (optional):
+                - Operating System: Windows 10 Enterprise
+                - 1x PC1 - domain joined:
+                    - Name: "PC1"
+                    - OS Version: latest
+                    - vCPU: 2
+                    - Max memory: 4GB
+                    - Disks: 1 x 100GB (OS, Dynamic) 
+                - 1x PC2 - domain joined:
+                    - Name: "PC2"
+                    - OS Version: latest (N-1 when PARAMETER PC2OlderOS is used)
+                    - vCPU: 2
+                    - Max memory: 4GB
+                    - Disks: 1 x 100GB (OS, Dynamic) 
 
     The following customisations are applied to the ConfigMgr server post install:
         - The ConfigMgr console is updated
@@ -305,11 +313,11 @@ Param (
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [String]$ADKDownloadUrl = "https://go.microsoft.com/fwlink/?linkid=2086042",
+    [String]$ADKDownloadUrl = "https://go.microsoft.com/fwlink/?linkid=2120254",
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [String]$WinPEDownloadURL = "https://go.microsoft.com/fwlink/?linkid=2087112",
+    [String]$WinPEDownloadURL = "https://go.microsoft.com/fwlink/?linkid=2120253",
 
     [Parameter()]
     [Switch]$SkipDomainCheck,
@@ -526,7 +534,7 @@ $sqlRole = Get-LabMachineRoleDefinition -Role SQLServer2017 -Properties @{
     Collation = "SQL_Latin1_General_CP1_CI_AS"
 }
 
-Add-LabDiskDefinition -Name $DataDisk -DiskSizeInGb 50 -Label "DATA01" -DriveLetter "G"
+Add-LabDiskDefinition -Name $DataDisk -DiskSizeInGb 100 -Label "DATA01" -DriveLetter "G"
 Add-LabDiskDefinition -Name $SQLDisk -DiskSizeInGb 30 -Label "SQL01" -DriveLetter "F"
 
 if ($ExcludePostInstallations.IsPresent) {
