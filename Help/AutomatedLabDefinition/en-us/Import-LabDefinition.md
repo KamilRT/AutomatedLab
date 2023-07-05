@@ -1,14 +1,13 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
-Module Name: automatedlabdefinition
-online version:
+Module Name: AutomatedLabDefinition
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Import-LabDefinition
 schema: 2.0.0
 ---
 
 # Import-LabDefinition
 
 ## SYNOPSIS
-
 Import an existing lab definition to extend it later on.
 
 ## SYNTAX
@@ -38,7 +37,6 @@ Imports the lab named POSH and stores the definition in a variable.
 ## PARAMETERS
 
 ### -Name
-
 Name of the exported lab to import.
 
 ```yaml
@@ -54,7 +52,6 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-
 Indicates that the imported data should be returned
 
 ```yaml
@@ -64,13 +61,12 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Path
-
 Path to the lab definition files.
 
 ```yaml
@@ -91,10 +87,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

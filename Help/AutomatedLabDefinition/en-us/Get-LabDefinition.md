@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Get-LabDefinition
 schema: 2.0.0
 ---
 
@@ -22,8 +22,6 @@ Retrieves all lab definition information
 ## EXAMPLES
 
 ### Example 1
-
-
 ```powershell
 Get-LabDefinition
 ```
@@ -42,3 +40,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

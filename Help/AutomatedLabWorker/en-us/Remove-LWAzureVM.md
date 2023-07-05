@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Remove-LWAzureVM
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Remove an Azure VM
 ## SYNTAX
 
 ```
-Remove-LWAzureVM -Name <String> [-AsJob] [-PassThru] [<CommonParameters>]
+Remove-LWAzureVM [-Name] <String> [-AsJob] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ Aliases:
 
 Required: False
 Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The host to remove
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,22 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The host to remove
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,3 +87,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

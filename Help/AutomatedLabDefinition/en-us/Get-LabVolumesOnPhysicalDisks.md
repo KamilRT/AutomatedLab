@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Get-LabVolumesOnPhysicalDisks
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Get lab volumes
 ## SYNTAX
 
 ```
-Get-LabVolumesOnPhysicalDisks
+Get-LabVolumesOnPhysicalDisks [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +30,9 @@ Return all physical disks on the lab host
 
 ## PARAMETERS
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
@@ -37,3 +40,4 @@ Return all physical disks on the lab host
 ## NOTES
 
 ## RELATED LINKS
+

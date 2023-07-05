@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Get-LWAzureLoadBalancedPort
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ Get-LWAzureLoadBalancedPort [[-Port] <UInt16>] [[-DestinationPort] <UInt16>] [-C
 ```
 
 ## DESCRIPTION
-List the current ports on the lab's load balancer for a machine. Capable of filtering port and
-destination port
+List the current ports on the lab's load balancer for a machine.
+Capable of filtering port and destination port
 
 ## EXAMPLES
 
@@ -86,10 +86,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

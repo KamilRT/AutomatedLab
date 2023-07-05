@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Remove-LWVMWareVM
 schema: 2.0.0
 ---
 
@@ -26,8 +26,7 @@ Remove a VMWare virtual machine
 PS C:\> Remove-LWVMWareVM -ComputerName SomeHost -AsJob -PassThru
 ```
 
-Removes the VMWare machine SomeHost in a background job and returns
-the job object
+Removes the VMWare machine SomeHost in a background job and returns the job object
 
 ## PARAMETERS
 
@@ -41,7 +40,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,7 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -82,10 +81,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

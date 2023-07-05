@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabUnattended-help.xml
 Module Name: AutomatedLabUnattended
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabUnattended/en-us/Set-UnattendedPackage
 schema: 2.0.0
 ---
 
@@ -12,8 +12,24 @@ Adds additional packages on Linux.
 
 ## SYNTAX
 
+### Windows (Default)
 ```
-Set-UnattendedPackage [-Package] <String[]> [-IsKickstart] [-IsAutoYast] [<CommonParameters>]
+Set-UnattendedPackage [-Package] <String[]> [<CommonParameters>]
+```
+
+### CloudInit
+```
+Set-UnattendedPackage [-Package] <String[]> [-IsCloudInit] [<CommonParameters>]
+```
+
+### Yast
+```
+Set-UnattendedPackage [-Package] <String[]> [-IsAutoYast] [<CommonParameters>]
+```
+
+### Kickstart
+```
+Set-UnattendedPackage [-Package] <String[]> [-IsKickstart] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,8 +42,7 @@ Adds additional packages on Linux.
 PS C:\> Set-UnattendedPackage -Package '@core','@^graphical-server-environment'
 ```
 
-Add the package group 'core' and the environment 'graphical-server-environment' to the list
-of packages to install.
+Add the package group 'core' and the environment 'graphical-server-environment' to the list of packages to install.
 
 ## PARAMETERS
 
@@ -36,7 +51,22 @@ Indicates that this setting is placed in an AutoYAST file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Yast
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsCloudInit
+Indicates that this setting is placed in a cloudinit file
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: CloudInit
 Aliases:
 
 Required: False
@@ -51,12 +81,12 @@ Indicates that this setting is placed in a Kickstart file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Kickstart
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -82,10 +112,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

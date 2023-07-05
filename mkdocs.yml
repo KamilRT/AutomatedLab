@@ -10,6 +10,7 @@ nav:
   - Creating a new lab: Wiki/Basic/createnewlab.md
   - Networks and IP Addresses: Wiki/Basic/networksandaddresses.md
   - Adding machines: Wiki/Basic/addmachines.md
+  - Modifying labs: Wiki/Basic/modifylab.md
   - Preparing a fully offline environment: Wiki/Basic/fullyoffline.md
   - Joining lab VMs to existing domain: Wiki/Basic/joindomain.md
   - Parallel deployments: Wiki/Advanced/resourcenaming.md
@@ -26,6 +27,7 @@ nav:
   - Lab Builder REST API: Wiki/Roles/restapi.md
   - Dynamics 365: Wiki/Roles/dynamics365.md
   - SCVMM: Wiki/Roles/scvmm.md
+  - SCCM/MEMCM: Wiki/Roles/configurationmanager.md
   - Custom roles: Wiki/Advanced/customroles.md
 - Customizing your lab:
   - Installing Windows features: Wiki/Basic/installwindowsfeatures.md
@@ -35,6 +37,7 @@ nav:
   - Exchanging data: Wiki/Basic/exchangedata.md
   - Notification system: Wiki/Advanced/notifications.md
   - Connecting two labs: Wiki/Advanced/connectlabs.md
+  - Running on a Cluster: Wiki/Advanced/runoncluster.md
 - Azure labs:
   - Adding a subscription: Wiki/Basic/addazuresubscription.md
   - Synchronise local lab sources: Wiki/Basic/synclabsources.md
@@ -42,8 +45,11 @@ nav:
   - Using the Bastion host: Wiki/Basic/useazurebastion.md
 - Sample scripts:
   - Azure:
+    - AzureStackHub.ps1: Wiki/SampleScripts/Azure/en-us/AzureStackHub.md
     - MultiForestLab 2012R2.ps1: Wiki/SampleScripts/Azure/en-us/MultiForestLab 2012R2.md
+    - MultiNetMultiForest.ps1: Wiki/SampleScripts/Azure/en-us/MultiNetMultiForest.md
     - VpnConnectedLab.ps1: Wiki/SampleScripts/Azure/en-us/VpnConnectedLab.md
+    - VpnConnectedLabArc.ps1: Wiki/SampleScripts/Azure/en-us/VpnConnectedLabArc.md
   - HyperV:
     - AL Loves Linux.ps1: Wiki/SampleScripts/HyperV/en-us/AL Loves Linux.md
     - BigLab 2012R2 EX SQL ORCH VS OFF.ps1: Wiki/SampleScripts/HyperV/en-us/BigLab 2012R2 EX SQL ORCH VS OFF.md
@@ -85,10 +91,12 @@ nav:
     - 12.2 Azure SQL Server and client, domain joined.ps1: Wiki/SampleScripts/Introduction/en-us/12.2 Azure SQL Server and client, domain joined.md
   - Scenarios:
     - AGPM Lab 1.ps1: Wiki/SampleScripts/Scenarios/en-us/AGPM Lab 1.md
+    - AzureArcConnectedHyperV.ps1: Wiki/SampleScripts/Scenarios/en-us/AzureArcConnectedHyperV.md
     - AzureDevOpsBuildAgent.ps1: Wiki/SampleScripts/Scenarios/en-us/AzureDevOpsBuildAgent.md
     - AzureDevOpsCloudConnection.ps1: Wiki/SampleScripts/Scenarios/en-us/AzureDevOpsCloudConnection.md
     - CM-1902.ps1: Wiki/SampleScripts/Scenarios/en-us/CM-1902.md
     - CM-2002.ps1: Wiki/SampleScripts/Scenarios/en-us/CM-2002.md
+    - CM-2103.ps1: Wiki/SampleScripts/Scenarios/en-us/CM-2103.md
     - DSC Pull Scenario 1 (Pull Configuration).ps1: Wiki/SampleScripts/Scenarios/en-us/DSC Pull Scenario 1 (Pull Configuration).md
     - DSC Pull Scenario 1 (Pull Configuration, SQL Reporting).ps1: Wiki/SampleScripts/Scenarios/en-us/DSC Pull Scenario 1 (Pull Configuration, SQL Reporting).md
     - DSC Pull Scenario 2 (Pull Partial Configuration).ps1: Wiki/SampleScripts/Scenarios/en-us/DSC Pull Scenario 2 (Pull Partial Configuration).md
@@ -100,6 +108,7 @@ nav:
     - Failover Clustering 3 MultipleNetworks.ps1: Wiki/SampleScripts/Scenarios/en-us/Failover Clustering 3 MultipleNetworks.md
     - Failover Clustering 3 MultipleNetworksAzure.ps1: Wiki/SampleScripts/Scenarios/en-us/Failover Clustering 3 MultipleNetworksAzure.md
     - Hybrid Environment HyperV and Azure 1.ps1: Wiki/SampleScripts/Scenarios/en-us/Hybrid Environment HyperV and Azure 1.md
+    - HybridHyperVAzureArc.ps1: Wiki/SampleScripts/Scenarios/en-us/HybridHyperVAzureArc.md
     - HyperVClusterWithVmm.ps1: Wiki/SampleScripts/Scenarios/en-us/HyperVClusterWithVmm.md
     - InternalRouting.ps1: Wiki/SampleScripts/Scenarios/en-us/InternalRouting.md
     - Lab in a Box 1 - HyperV.ps1: Wiki/SampleScripts/Scenarios/en-us/Lab in a Box 1 - HyperV.md
@@ -111,7 +120,7 @@ nav:
     - NuGetServer.ps1: Wiki/SampleScripts/Scenarios/en-us/NuGetServer.md
     - ProGet Lab - Azure.ps1: Wiki/SampleScripts/Scenarios/en-us/ProGet Lab - Azure.md
     - ProGet Lab - HyperV.ps1: Wiki/SampleScripts/Scenarios/en-us/ProGet Lab - HyperV.md
-    - RemoteDesktopServices.ps1: Wiki/SampleScripts/Scenarios/en-us/RemoteDesktopServices.ps1
+    - RemoteDesktopServices.ps1: Wiki/SampleScripts/Scenarios/en-us/RemoteDesktopServices.md
     - SCCM Lab 1.ps1: Wiki/SampleScripts/Scenarios/en-us/SCCM Lab 1.md
     - SCOMDistributed.ps1: Wiki/SampleScripts/Scenarios/en-us/SCOMDistributed.md
     - SCVMM.ps1: Wiki/SampleScripts/Scenarios/en-us/SCVMM.md
@@ -138,7 +147,7 @@ nav:
 - Version history: https://github.com/AutomatedLab/AutomatedLab/blob/master/CHANGELOG.md
 - Module help:
   - AutomatedLab:
-    - Set-LabAutoLogon: AutomatedLab/en-us/Set-LabAutoLogon.md
+    - Disable-LabHostRemoting: AutomatedLab/en-us/Disable-LabHostRemoting.md
     - Add-LabAzureSubscription: AutomatedLab/en-us/Add-LabAzureSubscription.md
     - Add-LabCertificate: AutomatedLab/en-us/Add-LabCertificate.md
     - Add-LabVMUserRight: AutomatedLab/en-us/Add-LabVMUserRight.md
@@ -157,6 +166,7 @@ nav:
     - Disconnect-Lab: AutomatedLab/en-us/Disconnect-Lab.md
     - Dismount-LabIsoImage: AutomatedLab/en-us/Dismount-LabIsoImage.md
     - Enable-LabAutoLogon: AutomatedLab/en-us/Enable-LabAutoLogon.md
+    - Enable-LabAzureJitAccess: AutomatedLab/en-us/Enable-LabAzureJitAccess.md
     - Enable-LabCertificateAutoenrollment: AutomatedLab/en-us/Enable-LabCertificateAutoenrollment.md
     - Enable-LabHostRemoting: AutomatedLab/en-us/Enable-LabHostRemoting.md
     - Enable-LabInternalRouting: AutomatedLab/en-us/Enable-LabInternalRouting.md
@@ -174,7 +184,6 @@ nav:
     - Get-LabAzureCertificate: AutomatedLab/en-us/Get-LabAzureCertificate.md
     - Get-LabAzureDefaultLocation: AutomatedLab/en-us/Get-LabAzureDefaultLocation.md
     - Get-LabAzureDefaultResourceGroup: AutomatedLab/en-us/Get-LabAzureDefaultResourceGroup.md
-    - Get-LabAzureDefaultStorageAccount: AutomatedLab/en-us/Get-LabAzureDefaultStorageAccount.md
     - Get-LabAzureLabSourcesContent: AutomatedLab/en-us/Get-LabAzureLabSourcesContent.md
     - Get-LabAzureLabSourcesStorage: AutomatedLab/en-us/Get-LabAzureLabSourcesStorage.md
     - Get-LabAzureLocation: AutomatedLab/en-us/Get-LabAzureLocation.md
@@ -196,6 +205,7 @@ nav:
     - Get-LabSoftwarePackage: AutomatedLab/en-us/Get-LabSoftwarePackage.md
     - Get-LabSourcesLocation: AutomatedLab/en-us/Get-LabSourcesLocation.md
     - Get-LabSourcesLocationInternal: AutomatedLab/en-us/Get-LabSourcesLocationInternal.md
+    - Get-LabSshKnownHost: AutomatedLab/en-us/Get-LabSshKnownHost.md
     - Get-LabTfsFeed: AutomatedLab/en-us/Get-LabTfsFeed.md
     - Get-LabTfsParameter: AutomatedLab/en-us/Get-LabTfsParameter.md
     - Get-LabTfsUri: AutomatedLab/en-us/Get-LabTfsUri.md
@@ -211,12 +221,15 @@ nav:
     - Get-LabWindowsFeature: AutomatedLab/en-us/Get-LabWindowsFeature.md
     - Import-Lab: AutomatedLab/en-us/Import-Lab.md
     - Import-LabAzureCertificate: AutomatedLab/en-us/Import-LabAzureCertificate.md
+    - Initialize-LabWindowsActivation: AutomatedLab/en-us/Initialize-LabWindowsActivation.md
     - Install-Lab: AutomatedLab/en-us/Install-Lab.md
     - Install-LabADDSTrust: AutomatedLab/en-us/Install-LabADDSTrust.md
     - Install-LabAdfs: AutomatedLab/en-us/Install-LabAdfs.md
     - Install-LabAdfsProxy: AutomatedLab/en-us/Install-LabAdfsProxy.md
+    - Install-LabAzureRequiredModule: AutomatedLab/en-us/Install-LabAzureRequiredModule.md
     - Install-LabAzureServices: AutomatedLab/en-us/Install-LabAzureServices.md
     - Install-LabBuildWorker: AutomatedLab/en-us/Install-LabBuildWorker.md
+    - Install-LabConfigurationManager: AutomatedLab/en-us/Install-LabConfigurationManager.md
     - Install-LabDcs: AutomatedLab/en-us/Install-LabDcs.md
     - Install-LabDnsForwarder: AutomatedLab/en-us/Install-LabDnsForwarder.md
     - Install-LabDscClient: AutomatedLab/en-us/Install-LabDscClient.md
@@ -228,6 +241,7 @@ nav:
     - Install-LabOffice2013: AutomatedLab/en-us/Install-LabOffice2013.md
     - Install-LabOffice2016: AutomatedLab/en-us/Install-LabOffice2016.md
     - Install-LabRdsCertificate: AutomatedLab/en-us/Install-LabRdsCertificate.md
+    - Install-LabRemoteDesktopServices: AutomatedLab/en-us/Install-LabRemoteDesktopServices.md
     - Install-LabRootDcs: AutomatedLab/en-us/Install-LabRootDcs.md
     - Install-LabRouting: AutomatedLab/en-us/Install-LabRouting.md
     - Install-LabScom: AutomatedLab/en-us/Install-LabScom.md
@@ -236,6 +250,7 @@ nav:
     - Install-LabSoftwarePackages: AutomatedLab/en-us/Install-LabSoftwarePackages.md
     - Install-LabSqlSampleDatabases: AutomatedLab/en-us/Install-LabSqlSampleDatabases.md
     - Install-LabSqlServers: AutomatedLab/en-us/Install-LabSqlServers.md
+    - Install-LabSshKnownHost: AutomatedLab/en-us/Install-LabSshKnownHost.md
     - Install-LabTeamFoundationEnvironment: AutomatedLab/en-us/Install-LabTeamFoundationEnvironment.md
     - Install-LabWindowsAdminCenter: AutomatedLab/en-us/Install-LabWindowsAdminCenter.md
     - Install-LabWindowsFeature: AutomatedLab/en-us/Install-LabWindowsFeature.md
@@ -248,6 +263,7 @@ nav:
     - New-LabAzureLabSourcesStorage: AutomatedLab/en-us/New-LabAzureLabSourcesStorage.md
     - New-LabAzureRmResourceGroup: AutomatedLab/en-us/New-LabAzureRmResourceGroup.md
     - New-LabAzureWebApp: AutomatedLab/en-us/New-LabAzureWebApp.md
+    - New-LabBaseImages: AutomatedLab/en-us/New-LabBaseImages.md
     - New-LabCATemplate: AutomatedLab/en-us/New-LabCATemplate.md
     - New-LabCimSession: AutomatedLab/en-us/New-LabCimSession.md
     - New-LabPSSession: AutomatedLab/en-us/New-LabPSSession.md
@@ -258,16 +274,17 @@ nav:
     - New-LabVM: AutomatedLab/en-us/New-LabVM.md
     - Open-LabTfsSite: AutomatedLab/en-us/Open-LabTfsSite.md
     - Register-LabArgumentCompleters: AutomatedLab/en-us/Register-LabArgumentCompleters.md
-    - Remove-DeploymentFiles: AutomatedLab/en-us/Remove-DeploymentFiles.md
     - Remove-Lab: AutomatedLab/en-us/Remove-Lab.md
     - Remove-LabAzureLabSourcesStorage: AutomatedLab/en-us/Remove-LabAzureLabSourcesStorage.md
     - Remove-LabAzureResourceGroup: AutomatedLab/en-us/Remove-LabAzureResourceGroup.md
     - Remove-LabCimSession: AutomatedLab/en-us/Remove-LabCimSession.md
+    - Remove-LabDeploymentFiles: AutomatedLab/en-us/Remove-LabDeploymentFiles.md
     - Remove-LabDscLocalConfigurationManagerConfiguration: AutomatedLab/en-us/Remove-LabDscLocalConfigurationManagerConfiguration.md
     - Remove-LabPSSession: AutomatedLab/en-us/Remove-LabPSSession.md
     - Remove-LabVariable: AutomatedLab/en-us/Remove-LabVariable.md
     - Remove-LabVM: AutomatedLab/en-us/Remove-LabVM.md
     - Remove-LabVMSnapshot: AutomatedLab/en-us/Remove-LabVMSnapshot.md
+    - Request-LabAzureJitAccess: AutomatedLab/en-us/Request-LabAzureJitAccess.md
     - Request-LabCertificate: AutomatedLab/en-us/Request-LabCertificate.md
     - Reset-AutomatedLab: AutomatedLab/en-us/Reset-AutomatedLab.md
     - Restart-LabVM: AutomatedLab/en-us/Restart-LabVM.md
@@ -276,7 +293,6 @@ nav:
     - Restore-LabVMSnapshot: AutomatedLab/en-us/Restore-LabVMSnapshot.md
     - Save-LabVM: AutomatedLab/en-us/Save-LabVM.md
     - Set-LabAzureDefaultLocation: AutomatedLab/en-us/Set-LabAzureDefaultLocation.md
-    - Set-LabAzureDefaultStorageAccount: AutomatedLab/en-us/Set-LabAzureDefaultStorageAccount.md
     - Set-LabAzureWebAppContent: AutomatedLab/en-us/Set-LabAzureWebAppContent.md
     - Set-LabDefaultOperatingSystem: AutomatedLab/en-us/Set-LabDefaultOperatingSystem.md
     - Set-LabDefaultVirtualizationEngine: AutomatedLab/en-us/Set-LabDefaultVirtualizationEngine.md
@@ -308,6 +324,7 @@ nav:
     - Unblock-LabSources: AutomatedLab/en-us/Unblock-LabSources.md
     - Undo-LabHostRemoting: AutomatedLab/en-us/Undo-LabHostRemoting.md
     - Uninstall-LabRdsCertificate: AutomatedLab/en-us/Uninstall-LabRdsCertificate.md
+    - UnInstall-LabSshKnownHost: AutomatedLab/en-us/UnInstall-LabSshKnownHost.md
     - Uninstall-LabWindowsFeature: AutomatedLab/en-us/Uninstall-LabWindowsFeature.md
     - Update-LabAzureSettings: AutomatedLab/en-us/Update-LabAzureSettings.md
     - Update-LabBaseImage: AutomatedLab/en-us/Update-LabBaseImage.md
@@ -318,12 +335,20 @@ nav:
     - Wait-LabVMRestart: AutomatedLab/en-us/Wait-LabVMRestart.md
     - Wait-LabVMShutdown: AutomatedLab/en-us/Wait-LabVMShutdown.md
   - AutomatedLab.Recipe:
+    - Export-LabSnippet: AutomatedLab.Recipe/en-us/Export-LabSnippet.md
     - Get-LabRecipe: AutomatedLab.Recipe/en-us/Get-LabRecipe.md
+    - Get-LabSnippet: AutomatedLab.Recipe/en-us/Get-LabSnippet.md
     - Invoke-LabRecipe: AutomatedLab.Recipe/en-us/Invoke-LabRecipe.md
+    - Invoke-LabSnippet: AutomatedLab.Recipe/en-us/Invoke-LabSnippet.md
     - New-LabRecipe: AutomatedLab.Recipe/en-us/New-LabRecipe.md
+    - New-LabSnippet: AutomatedLab.Recipe/en-us/New-LabSnippet.md
     - Remove-LabRecipe: AutomatedLab.Recipe/en-us/Remove-LabRecipe.md
+    - Remove-LabSnippet: AutomatedLab.Recipe/en-us/Remove-LabSnippet.md
     - Save-LabRecipe: AutomatedLab.Recipe/en-us/Save-LabRecipe.md
+    - Set-LabSnippet: AutomatedLab.Recipe/en-us/Set-LabSnippet.md
+    - Update-LabSnippet: AutomatedLab.Recipe/en-us/Update-LabSnippet.md
   - AutomatedLabDefinition:
+    - Get-LabPostInstallationActivity: AutomatedLabDefinition/en-us/Get-LabPostInstallationActivity.md
     - Add-LabAzureAppServicePlanDefinition: AutomatedLabDefinition/en-us/Add-LabAzureAppServicePlanDefinition.md
     - Add-LabAzureWebAppDefinition: AutomatedLabDefinition/en-us/Add-LabAzureWebAppDefinition.md
     - Add-LabDiskDefinition: AutomatedLabDefinition/en-us/Add-LabDiskDefinition.md
@@ -338,10 +363,10 @@ nav:
     - Get-LabAzureWebAppDefinition: AutomatedLabDefinition/en-us/Get-LabAzureWebAppDefinition.md
     - Get-LabDefinition: AutomatedLabDefinition/en-us/Get-LabDefinition.md
     - Get-LabDomainDefinition: AutomatedLabDefinition/en-us/Get-LabDomainDefinition.md
+    - Get-LabInstallationActivity: AutomatedLabDefinition/en-us/Get-LabInstallationActivity.md
     - Get-LabIsoImageDefinition: AutomatedLabDefinition/en-us/Get-LabIsoImageDefinition.md
     - Get-LabMachineDefinition: AutomatedLabDefinition/en-us/Get-LabMachineDefinition.md
     - Get-LabMachineRoleDefinition: AutomatedLabDefinition/en-us/Get-LabMachineRoleDefinition.md
-    - Get-LabPostInstallationActivity: AutomatedLabDefinition/en-us/Get-LabPostInstallationActivity.md
     - Get-LabVirtualNetwork: AutomatedLabDefinition/en-us/Get-LabVirtualNetwork.md
     - Get-LabVirtualNetworkDefinition: AutomatedLabDefinition/en-us/Get-LabVirtualNetworkDefinition.md
     - Get-LabVolumesOnPhysicalDisks: AutomatedLabDefinition/en-us/Get-LabVolumesOnPhysicalDisks.md
@@ -370,6 +395,7 @@ nav:
     - Export-UnattendedFile: AutomatedLabUnattended/en-us/Export-UnattendedFile.md
     - Get-UnattendedContent: AutomatedLabUnattended/en-us/Get-UnattendedContent.md
     - Import-UnattendedContent: AutomatedLabUnattended/en-us/Import-UnattendedContent.md
+    - Import-UnattendedFile: AutomatedLabUnattended/en-us/Import-UnattendedFile.md
     - Set-UnattendedAdministratorName: AutomatedLabUnattended/en-us/Set-UnattendedAdministratorName.md
     - Set-UnattendedAdministratorPassword: AutomatedLabUnattended/en-us/Set-UnattendedAdministratorPassword.md
     - Set-UnattendedAntiMalware: AutomatedLabUnattended/en-us/Set-UnattendedAntiMalware.md
@@ -403,11 +429,13 @@ nav:
     - Get-LWAzureLoadBalancedPort: AutomatedLabWorker/en-us/Get-LWAzureLoadBalancedPort.md
     - Get-LWAzureNetworkSwitch: AutomatedLabWorker/en-us/Get-LWAzureNetworkSwitch.md
     - Get-LWAzureSku: AutomatedLabWorker/en-us/Get-LWAzureSku.md
+    - Get-LWAzureVm: AutomatedLabWorker/en-us/Get-LWAzureVm.md
     - Get-LWAzureVMConnectionInfo: AutomatedLabWorker/en-us/Get-LWAzureVMConnectionInfo.md
     - Get-LWAzureVmSize: AutomatedLabWorker/en-us/Get-LWAzureVmSize.md
     - Get-LWAzureVmSnapshot: AutomatedLabWorker/en-us/Get-LWAzureVmSnapshot.md
     - Get-LWAzureVMStatus: AutomatedLabWorker/en-us/Get-LWAzureVMStatus.md
     - Get-LWAzureWindowsFeature: AutomatedLabWorker/en-us/Get-LWAzureWindowsFeature.md
+    - Get-LWHypervVM: AutomatedLabWorker/en-us/Get-LWHypervVM.md
     - Get-LWHypervVMDescription: AutomatedLabWorker/en-us/Get-LWHypervVMDescription.md
     - Get-LWHypervVMSnapshot: AutomatedLabWorker/en-us/Get-LWHypervVMSnapshot.md
     - Get-LWHypervVMStatus: AutomatedLabWorker/en-us/Get-LWHypervVMStatus.md
@@ -423,7 +451,6 @@ nav:
     - Mount-LWAzureIsoImage: AutomatedLabWorker/en-us/Mount-LWAzureIsoImage.md
     - Mount-LWIsoImage: AutomatedLabWorker/en-us/Mount-LWIsoImage.md
     - New-LabAzureResourceGroupDeployment: AutomatedLabWorker/en-us/New-LabAzureResourceGroupDeployment.md
-    - New-LWAzureLoadBalancer: AutomatedLabWorker/en-us/New-LWAzureLoadBalancer.md
     - New-LWAzureNetworkSwitch: AutomatedLabWorker/en-us/New-LWAzureNetworkSwitch.md
     - New-LWAzureVM: AutomatedLabWorker/en-us/New-LWAzureVM.md
     - New-LWHypervNetworkSwitch: AutomatedLabWorker/en-us/New-LWHypervNetworkSwitch.md
@@ -431,8 +458,7 @@ nav:
     - New-LWReferenceVHDX: AutomatedLabWorker/en-us/New-LWReferenceVHDX.md
     - New-LWVHDX: AutomatedLabWorker/en-us/New-LWVHDX.md
     - New-LWVMWareVM: AutomatedLabWorker/en-us/New-LWVMWareVM.md
-    - Remove-LWAzureLoadBalancer: AutomatedLabWorker/en-us/Remove-LWAzureLoadBalancer.md
-    - Remove-LWAzureNetworkSwitch: AutomatedLabWorker/en-us/Remove-LWAzureNetworkSwitch.md
+    - Remove-LWAzureRecoveryServicesVault: AutomatedLabWorker/en-us/Remove-LWAzureRecoveryServicesVault.md
     - Remove-LWAzureVM: AutomatedLabWorker/en-us/Remove-LWAzureVM.md
     - Remove-LWAzureVmSnapshot: AutomatedLabWorker/en-us/Remove-LWAzureVmSnapshot.md
     - Remove-LWHypervVM: AutomatedLabWorker/en-us/Remove-LWHypervVM.md
@@ -464,6 +490,7 @@ nav:
     - Add-HostEntry: HostsFile/en-us/Add-HostEntry.md
     - Clear-HostFile: HostsFile/en-us/Clear-HostFile.md
     - Get-HostEntry: HostsFile/en-us/Get-HostEntry.md
+    - Get-HostFile: HostsFile/en-us/Get-HostFile.md
     - Remove-HostEntry: HostsFile/en-us/Remove-HostEntry.md
   - PSFileTransfer:
     - Copy-LabFileItem: PSFileTransfer/en-us/Copy-LabFileItem.md

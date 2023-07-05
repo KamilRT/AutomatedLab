@@ -13,12 +13,12 @@ Creates a new load balancer for the lab environment
 ## SYNTAX
 
 ```
-New-LWAzureLoadBalancer [[-ConnectedMachines] <Machine[]>] [-PassThru] [-Wait]
+New-LWAzureLoadBalancer [[-ConnectedMachines] <Machine[]>] [-PassThru] [-Wait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new load balancer for the lab environment. Reserves a public IP for the lab
-and creates the necessary frontend and backend address pools.
+Creates a new load balancer for the lab environment.
+Reserves a public IP for the lab and creates the necessary frontend and backend address pools.
 
 ## EXAMPLES
 
@@ -56,7 +56,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,15 +71,17 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object

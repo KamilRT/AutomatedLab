@@ -1,7 +1,7 @@
 ---
 external help file: PSLog-help.xml
 Module Name: PSLog
-online version:
+online version: https://automatedlab.org/en/latest/PSLog/en-us/Write-ProgressIndicator
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Write a . to the console, indicating an activity
 ## SYNTAX
 
 ```
-Write-ProgressIndicator
+Write-ProgressIndicator [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,6 +43,9 @@ Write . to the console host as long as loop is processing
 
 ## PARAMETERS
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
@@ -53,3 +56,4 @@ Write . to the console host as long as loop is processing
 ## NOTES
 
 ## RELATED LINKS
+

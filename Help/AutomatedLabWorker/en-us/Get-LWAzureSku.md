@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Get-LWAzureSku
 schema: 2.0.0
 ---
 
@@ -23,15 +23,15 @@ Internal worker to list Azure SKUs
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-LWAzureSku -Machine (Get-LabVm Host1)
 ```
 
-{{ Add example description here }}
+Generate the SKU to use for the given machine (definition)
 
 ## PARAMETERS
 
 ### -Machine
-{{ Fill Machine Description }}
+The machine to generate the SKU for
 
 ```yaml
 Type: Machine
@@ -51,10 +51,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

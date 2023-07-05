@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabTest-help.xml
 Module Name: AutomatedLabTest
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabTest/en-us/Invoke-LabPester
 schema: 2.0.0
 ---
 
@@ -91,7 +91,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,12 +118,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### AutomatedLab.Lab
-
 ### System.String
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

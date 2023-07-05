@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Add-LabDiskDefinition
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Add lab disk definition
 
 ```
 Add-LabDiskDefinition [-Name] <String> [-DiskSizeInGb] <Int32> [-Label <String>] [-DriveLetter <Char>]
- [-UseLargeFRS] [-AllocationUnitSize <Int64>] [-SkipInitialize] [-PassThru] [<CommonParameters>]
+ [-UseLargeFRS] [-AllocationUnitSize <Int64>] [-PartitionStyle <String>] [-SkipInitialize] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,18 +34,19 @@ Creates a new disk definition and attaches the disk to the machine definition SQ
 
 ## PARAMETERS
 
-### -Name
-The disk name
+### -AllocationUnitSize
+The allocation unit size in Byte to use, e.g.
+64kb
 
 ```yaml
-Type: String
+Type: Int64
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -60,36 +62,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Indicates that the disk object should be passed back to the caller
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllocationUnitSize
-The allocation unit size in Byte to use, e.g. 64kb
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,6 +95,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The disk name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PartitionStyle
+MBR, GPT
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Indicates that the disk object should be passed back to the caller
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkipInitialize
 Indicates that the initialization of the disk with a file system should be skipped
 
@@ -133,7 +150,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -148,7 +165,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -163,3 +180,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

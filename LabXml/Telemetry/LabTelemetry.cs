@@ -6,6 +6,7 @@ using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using System.Linq;
 using System.Diagnostics;
+using Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing;
 
 namespace AutomatedLab
 {
@@ -14,23 +15,31 @@ namespace AutomatedLab
         private static volatile LabTelemetry instance;
         private static object syncRoot = new Object();
         private TelemetryClient telemetryClient = null;
-        private const string telemetryKey = "03367df3-a45f-4ba8-9163-e73999e2c7b6";
+        private const string telemetryConnectionString = "InstrumentationKey=fbff0c1a-4f7b-4b90-b74d-8370a38fd213;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/";
         private DateTime labStarted;
         private const string _telemetryOptInVar = "AUTOMATEDLAB_TELEMETRY_OPTIN";
+        private const string _nixLogPath = "/var/log/automatedlab/telemetry.log";
         public bool TelemetryEnabled { get; private set; }
 
         private LabTelemetry()
         {
-            TelemetryConfiguration.Active.InstrumentationKey = telemetryKey;
-            TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = false;
+            var config = TelemetryConfiguration.CreateDefault();
+            config.ConnectionString = telemetryConnectionString;
+            config.TelemetryChannel.DeveloperMode = false;
+            config.TelemetryInitializers.Add(new LabTelemetryInitializer());
 
-            // Add our own initializer to filter out any personal information before sending telemetry data
-            TelemetryConfiguration.Active.TelemetryInitializers.Add(new LabTelemetryInitializer());
-            telemetryClient = new TelemetryClient();
+            var diagnosticsTelemetryModule = new DiagnosticsTelemetryModule();
+            diagnosticsTelemetryModule.IsHeartbeatEnabled = false;
+            diagnosticsTelemetryModule.Initialize(config);
+            if (null == telemetryClient)
+            {
+                telemetryClient = new TelemetryClient(config);
+            }
+
             TelemetryEnabled = GetEnvironmentVariableAsBool(_telemetryOptInVar, false);
 
             // Initialize EventLog
-            if (Environment.OSVersion.Platform == (PlatformID.Unix | PlatformID.MacOSX)) return;
+            if (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX) return;
             if (!EventLog.SourceExists("AutomatedLab")) EventLog.CreateEventSource("AutomatedLab", "Application");
         }
 
@@ -55,6 +64,29 @@ namespace AutomatedLab
                     return false;
                 default:
                     return defaultValue;
+            }
+        }
+
+        private void WriteTelemetryEvent(string message, int id)
+        {
+            // Separate method in case we find a reliable way to log on Linux
+            if (Environment.OSVersion.Platform == PlatformID.Unix || Environment.OSVersion.Platform == PlatformID.MacOSX)
+            {
+                try
+                {
+                    System.IO.File.AppendAllText(_nixLogPath, $"{DateTime.Now.ToString("u")}<{id}>{message}");
+                }
+                catch { }
+
+            }
+
+            if (Environment.OSVersion.Platform.Equals(PlatformID.Win32NT))
+            {
+                try
+                {
+                    EventLog.WriteEntry("AutomatedLab", message, EventLogEntryType.Information, id);
+                }
+                catch { }
             }
         }
 
@@ -105,11 +137,8 @@ namespace AutomatedLab
                 $"\r\nosversion = {osVersion}" +
                 $"\r\npsversion = {psVersion}" +
                 $"\r\nmachineCount = {lab.Machines.Count}";
-            try
-            {
-                EventLog.WriteEntry("AutomatedLab", eventMessage, EventLogEntryType.Information, 101);
-            }
-            catch { }
+            WriteTelemetryEvent(eventMessage, 101);
+
             try
             {
                 telemetryClient.TrackEvent("LabStarted", properties, metrics);
@@ -141,11 +170,8 @@ namespace AutomatedLab
             var eventMessage = "Lab finished - Transmitting the following:" +
                             $"\r\ndayOfWeek = {labStarted.DayOfWeek.ToString()}" +
                             $"\r\ntimeTakenSeconds = {labDuration.TotalSeconds}";
-            try
-            {
-                EventLog.WriteEntry("AutomatedLab", eventMessage, EventLogEntryType.Information, 102);
-            }
-            catch { }
+            WriteTelemetryEvent(eventMessage, 102);
+
             try
             {
                 telemetryClient.TrackEvent("LabFinished", properties, metrics);
@@ -171,11 +197,7 @@ namespace AutomatedLab
 
             var eventMessage = "Lab removed - Transmitting the following:" +
                             $"\r\nlabRunningTicks = {duration.Ticks}";
-            try
-            {
-                EventLog.WriteEntry("AutomatedLab", eventMessage, EventLogEntryType.Information, 103);
-            }
-            catch { }
+            WriteTelemetryEvent(eventMessage, 103);
 
             try
             {
@@ -199,11 +221,7 @@ namespace AutomatedLab
 
             var eventMessage = "Function called - Transmitting the following:" +
                 $"\r\nfunction = {functionName}";
-            try
-            {
-                EventLog.WriteEntry("AutomatedLab", eventMessage, EventLogEntryType.Information, 101);
-            }
-            catch { }
+            WriteTelemetryEvent(eventMessage, 105);
 
             try
             {
@@ -219,6 +237,7 @@ namespace AutomatedLab
         private void SendUsedRole(List<string> roleName, bool isCustomRole = false)
         {
             if (!GetEnvironmentVariableAsBool(_telemetryOptInVar, false)) return;
+            if (roleName.Count == 0) return;
             var eventMessage = "Sending role infos - Transmitting the following:";
 
             roleName.ForEach(name =>
@@ -240,11 +259,7 @@ namespace AutomatedLab
                 }
             });
 
-            try
-            {
-                EventLog.WriteEntry("AutomatedLab", eventMessage, EventLogEntryType.Information, 104);
-            }
-            catch { }
+            WriteTelemetryEvent(eventMessage, 104);
             try
             {
 

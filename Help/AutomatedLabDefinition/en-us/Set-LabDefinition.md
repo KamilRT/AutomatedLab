@@ -1,37 +1,37 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Set-LabDefinition
 schema: 2.0.0
 ---
 
 # Set-LabDefinition
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Helper cmdlet to update the lab definition
 
 ## SYNTAX
 
 ```
-Set-LabDefinition [[-Lab] <Lab>] [[-Machines] <Machine[]>] [[-Disks] <Disk[]>]
+Set-LabDefinition [[-Lab] <Lab>] [[-Machines] <Machine[]>] [[-Disks] <Disk[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Helper cmdlet to update the lab definition
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-LabDefinition -Lab (Get-LabDefinition) -Machines $machines -Disks $disks
 ```
 
-{{ Add example description here }}
+Update the existing lab definition with a current list of machines and disks
 
 ## PARAMETERS
 
 ### -Disks
-{{ Fill Disks Description }}
+A list of disk definitions
 
 ```yaml
 Type: Disk[]
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Lab
-{{ Fill Lab Description }}
+The lab definition
 
 ```yaml
 Type: Lab
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Machines
-{{ Fill Machines Description }}
+A list of machine definitions
 
 ```yaml
 Type: Machine[]
@@ -75,13 +75,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

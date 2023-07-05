@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Add-LabDomainDefinition
 schema: 2.0.0
 ---
 
@@ -29,13 +29,13 @@ PS C:\> Add-LabDomainDefinition -Name comtoso.com -AdminUser Install -AdminPassw
 PS C:\> Set-LabInstallationCredential -User Install -Password Somepass1
 ```
 
-Configures the contoso domain for the entire lab. Take care to select the same installation credentials,
-otherwise the domain controller deployment will not work.
+Configures the contoso domain for the entire lab.
+Take care to select the same installation credentials, otherwise the domain controller deployment will not work.
 
 ## PARAMETERS
 
-### -Name
-Name of Active Directory domain or forest in FQDN format.
+### -AdminPassword
+Desired password of the administrator when deploying a new lab or password of an existing administrator if adding to a lab or an existing external (not deployed by AutomatedLab) domain.
 
 ```yaml
 Type: String
@@ -43,7 +43,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -64,8 +64,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AdminPassword
-Desired password of the administrator when deploying a new lab or password of an existing administrator if adding to a lab or an existing external (not deployed by AutomatedLab) domain.
+### -Name
+Name of Active Directory domain or forest in FQDN format.
 
 ```yaml
 Type: String
@@ -73,7 +73,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -89,7 +89,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -104,3 +104,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

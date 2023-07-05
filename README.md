@@ -36,23 +36,26 @@ Apart from the module itself your system needs to meet the following requirement
 
 #### Linux
 
-- WSL supported, Azure Cloud Shell supported
-- Tested on Fedora and Ubuntu, should run on any system capable of running PowerShell
-- PowerShell 6+
-- gss-ntlmssp to enable remoting (mandatory - no remoting, no way for AutomatedLab to do its thing)
-- ip and route commands available
-- Azure subscription - At the moment, AutomatedLab only works using Azure. KVM is planned for a later date.
+- Ubuntu, Ubuntu WSL & Azure Cloud Shell supported
+- Tested on Ubuntu. Due to fragmented nature of Linux distributions, we cannot support anything else.
+- PowerShell Core 6+
+- gss-ntlmssp to enable remoting (*mandatory - no remoting, no way for AutomatedLab to do its thing*)
+  - If in doubt, try to `Install-Module PSWSMAN; Install-WSMAN` - no success warranted
+- IP and route commands available
+- **Azure subscription**
+  - At the moment, AutomatedLab only works using Azure.
+  - KVM planned for a later date.
 
 ### Download AutomatedLab
 
 There are two options installing AutomatedLab:
 
 - You can use the [MSI installer](https://github.com/AutomatedLab/AutomatedLab/releases) published on GitHub.
-- Or you install from the [PowerShell Gallery](https://www.powershellgallery.com/packages/AutomatedLab/) using the cmdlet Install-Module. Please refer to the wiki for some details.
+- Or you install from the [PowerShell Gallery](https://www.powershellgallery.com/packages/AutomatedLab/) using the cmdlet Install-Module. Please refer to the [wiki](https://automatedlab.org/en/latest) for some details.
 
-### [1. Installation](https://github.com/AutomatedLab/AutomatedLab/wiki/1.-Installation)
+### [1. Installation](https://automatedlab.org/en/latest/Wiki/Basic/install/)
 
-### [2. Getting started](https://github.com/AutomatedLab/AutomatedLab/wiki/2.-Getting-Started)
+### [2. Getting started](https://automatedlab.org/en/latest/Wiki/Basic/gettingstarted/)
 
 ### [3. Contributing](/CONTRIBUTING.md)
 
@@ -62,7 +65,7 @@ There are two options installing AutomatedLab:
 
 This solution supports setting up virtual machines with the following products
 
-- Windows 7, 2008 R2, 8 / 8.1 and 2012 / 2012 R2, 10 / 2016, 2019
+- Windows 7, 2008 R2, 8 / 8.1 and 2012 / 2012 R2, 10 / 2016, 2019, 2022
 - SQL Server 2008, 2008R2, 2012, 2014, 2016, 2017, 2019
 - Visual Studio 2012, 2013, 2015
 - Team Foundation Services 2018, Azure DevOps Server
@@ -88,3 +91,24 @@ This solution supports setting up virtual machines with the following products
 - Creating a [virtual environment that is connected to the internet](/LabSources/SampleScripts/Introduction/05%20Single%20domain-joined%20server%20(internet%20facing).ps1) was never easier. The only requirements are defining an external facing virtual switch and a machine with two network cards that acts as the router. AL takes care about all the configuration details like setting the gateway on all machines and also the DNS settings (see introduction script [05 Single domain-joined server (internet facing).ps1](/LabSources/SampleScripts/Introduction/05%20Single%20domain-joined%20server%20(internet%20facing).ps1)).
 - AL offers offline patching with a single command. As all machines a based on one disk per OS, it is much more efficient to patch the ISO files that are used to create the base images (Update-LabIsoImage). See script [11 ISO Offline Patching.ps1](/LabSources/SampleScripts/Introduction/11%20ISO%20Offline%20Patching.ps1) for more details.
 - If a lab is no longer required, one command is enough to remove everything to be ready to start from scratch (Remove-Lab)
+
+### Local build
+
+While we frequently release prereleases to the PowerShell Gallery, you might be interested
+to build the entire module locally yourself.
+
+While the steps remain the same, the prerequisites are slightly different on Windows and Linux
+
+Windows:
+  - WiX 3 targets installed properly (!)
+  - .NET SDKs 4.6.2 and 6.0
+Linux:
+  - .NET 6.0
+
+After the prerequisites are satisfied, you can:
+- `./.build/01-prerequisites.ps1`
+- `./.build/02-build.ps1`
+- `./.build/03-validate.ps1` - Optionally validate the built module
+
+The fourth step, publishing, relies on AppVeyor. The built module will be stores in `./publish`,
+the installer can be found in `./Install/bin

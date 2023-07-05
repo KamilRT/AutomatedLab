@@ -54,9 +54,13 @@ namespace AutomatedLab
                 {
                     return LinuxType.Unknown;
                 }
-                else if (System.Text.RegularExpressions.Regex.IsMatch(OperatingSystem.OperatingSystemName, "CentOS|Red Hat|Fedora"))
+                if (System.Text.RegularExpressions.Regex.IsMatch(OperatingSystem.OperatingSystemName, "CentOS|Red Hat|Fedora"))
                 {
                     return LinuxType.RedHat;
+                }
+                if (System.Text.RegularExpressions.Regex.IsMatch(OperatingSystem.OperatingSystemName, "Ubuntu"))
+                {
+                    return LinuxType.Ubuntu;
                 }
 
                 return LinuxType.SuSE;
@@ -64,6 +68,7 @@ namespace AutomatedLab
         }
 
         public string FriendlyName { get; set; }
+        public int VmGeneration { get; set; }
 
         public bool Gen2VmSupported
         {
@@ -83,8 +88,16 @@ namespace AutomatedLab
         public int LoadBalancerRdpPort { get; set; }
         public int LoadBalancerWinRmHttpPort { get; set; }
         public int LoadBalancerWinrmHttpsPort { get; set; }
+        public int LoadBalancerSshPort { get; set; }
 
         public List<string> LinuxPackageGroup { get; set; }
+        public string SshPublicKey { get; set; }
+        public string SshPublicKeyPath { get; set; }
+        public string SshPrivateKeyPath { get; set; }
+        public string OrganizationalUnit { get; set; }
+        public string ReferenceDiskPath { get; set; }
+        public string InitialDscConfigurationMofPath { get; set; }
+        public string InitialDscLcmConfigurationMofPath { get; set; }
 
         public OperatingSystemType OperatingSystemType
         {
@@ -331,7 +344,7 @@ namespace AutomatedLab
             set { autoLogonPassword = value; }
         }
 
-        public Azure.AzureConnectionInfo AzureConnectionInfo {get; set;}
+        public Azure.AzureConnectionInfo AzureConnectionInfo { get; set; }
 
         public SerializableDictionary<string, string> AzureProperties
         {
@@ -387,11 +400,12 @@ namespace AutomatedLab
         {
             roles = new List<Role>();
             LinuxPackageGroup = new List<string>();
-            postInstallationActivity = new List<InstallationActivity>();            
+            postInstallationActivity = new List<InstallationActivity>();
             PreInstallationActivity = new List<InstallationActivity>();
             networkAdapters = new List<NetworkAdapter>();
             internalNotes = new SerializableDictionary<string, string>();
             notes = new SerializableDictionary<string, string>();
+            VmGeneration = 2;
         }
 
         public override string ToString()
@@ -415,7 +429,19 @@ namespace AutomatedLab
             if (dcRole == null || Force)
             {
                 //machine is not a domain controller, creating a local username 
-                userName = OperatingSystemType == OperatingSystemType.Linux ? "root" : string.Format(@"{0}\{1}", name, installationUser.UserName);
+                if (OperatingSystemType == OperatingSystemType.Linux && HostType == VirtualizationHost.Azure)
+                {
+                    // root user is prohibited on Azure
+                    userName = "automatedlab";
+                }
+                if (OperatingSystemType == OperatingSystemType.Linux && HostType != VirtualizationHost.Azure)
+                {
+                    userName = "root";
+                }
+                if (OperatingSystemType != OperatingSystemType.Linux)
+                {
+                    userName = string.Format(@"{0}\{1}", name, installationUser.UserName);
+                }
             }
             else
             {

@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabTest-help.xml
-Module Name: automatedlabtest
-online version:
+Module Name: AutomatedLabTest
+online version: https://automatedlab.org/en/latest/AutomatedLabTest/en-us/Import-LabTestResult
 schema: 2.0.0
 ---
 
@@ -72,10 +72,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

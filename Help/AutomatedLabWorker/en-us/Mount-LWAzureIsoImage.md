@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Mount-LWAzureIsoImage
 schema: 2.0.0
 ---
 
@@ -17,8 +17,8 @@ Mount-LWAzureIsoImage [-ComputerName] <String[]> [-IsoPath] <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-Mount an ISO image on an Azure VM. Tries to use the Azure lab sources file share to mount the ISO from
-if you are using the dynamic variable $LabSources
+Mount an ISO image on an Azure VM.
+Tries to use the Azure lab sources file share to mount the ISO from if you are using the dynamic variable $LabSources
 
 ## EXAMPLES
 
@@ -47,7 +47,8 @@ Accept wildcard characters: False
 ```
 
 ### -IsoPath
-The path of the ISO. Use $LabSources if possible.
+The path of the ISO.
+Use $LabSources if possible.
 
 ```yaml
 Type: String
@@ -71,7 +72,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -82,10 +83,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

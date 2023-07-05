@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Stop-LWAzureVM
 schema: 2.0.0
 ---
 
@@ -27,8 +27,7 @@ Stop an Azure VM, with the option to keep the VM provisioned
 PS C:\> Stop-LWAzureVM -ComputerName (Get-LabVm) -StayProvisioned
 ```
 
-Shut down all lab VMs while keeping their resources provisioned for a faster
-start next time.
+Shut down all lab VMs while keeping their resources provisioned for a faster start next time.
 
 ## PARAMETERS
 
@@ -57,13 +56,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ProgressIndicator
-Interval in seconds that a . should be written to the console
+Interval in seconds that a .
+should be written to the console
 
 ```yaml
 Type: Int32
@@ -87,7 +87,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -113,10 +113,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Get-LabMachineRoleDefinition
 schema: 2.0.0
 ---
 
@@ -35,22 +35,8 @@ Get-LabMachineRoleDefinition -Role RootDc -Syntax
 ```
 
 Returns all possible parameter for the specified role
+
 ## PARAMETERS
-
-### -Role
-The role names
-
-```yaml
-Type: Roles
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Properties
 The properties for one role definition that can be set for the role, e.g.
@@ -68,6 +54,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Role
+The role names
+
+```yaml
+Type: Roles
+Parameter Sets: (All)
+Aliases:
+Accepted values: RootDC, FirstChildDC, DC, ADDS, FileServer, WebServer, DHCP, Routing, CaRoot, CaSubordinate, SQLServer2008, SQLServer2008R2, SQLServer2012, SQLServer2014, SQLServer2016, VisualStudio2013, VisualStudio2015, SharePoint2013, SharePoint2016, Orchestrator2012, SQLServer2017, SQLServer, DSCPullServer, Office2013, Office2016, ADFS, ADFSWAP, ADFSProxy, FailoverStorage, FailoverNode, Tfs2015, Tfs2017, TfsBuildWorker, Tfs2018, HyperV, AzDevOps
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Syntax
 Indicates that Property-Syntax should be returned
 
@@ -78,7 +80,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -93,3 +95,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

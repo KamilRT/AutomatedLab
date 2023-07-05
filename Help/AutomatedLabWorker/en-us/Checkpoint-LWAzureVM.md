@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Checkpoint-LWAzureVM
 schema: 2.0.0
 ---
 
@@ -46,7 +46,8 @@ Accept wildcard characters: False
 ```
 
 ### -SnapshotName
-The name of the snapshot. Will be added as a Tag to the resource
+The name of the snapshot.
+Will be added as a Tag to the resource
 
 ```yaml
 Type: String
@@ -66,10 +67,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

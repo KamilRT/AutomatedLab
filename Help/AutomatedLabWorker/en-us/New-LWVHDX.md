@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/New-LWVHDX
 schema: 2.0.0
 ---
 
@@ -14,13 +14,12 @@ Create a new virtual disk
 
 ```
 New-LWVHDX [-VhdxPath] <String> [-SizeInGB] <Int32> [[-Label] <String>] [-UseLargeFRS] [[-DriveLetter] <Char>]
- [[-AllocationUnitSize] <Int64>] [-SkipInitialize] [<CommonParameters>]
+ [[-AllocationUnitSize] <Int64>] [[-PartitionStyle] <String>] [-SkipInitialize] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new Hyper-V VHDX file. Allows you to specify if FRS is used, which drive letter to mount
-the VHDX to, the allocation unit size in Byte or if the disk should not be initialized
-with the NTFS file system
+Creates a new Hyper-V VHDX file.
+Allows you to specify if FRS is used, which drive letter to mount the VHDX to, the allocation unit size in Byte or if the disk should not be initialized with the NTFS file system
 
 ## EXAMPLES
 
@@ -78,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PartitionStyle
+MBR, GPT
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SizeInGB
 The disk size in GB
 
@@ -103,7 +117,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -118,7 +132,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -144,10 +158,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

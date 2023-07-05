@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLab.Recipe-help.xml
 Module Name: AutomatedLab.Recipe
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLab.Recipe/en-us/Remove-LabRecipe
 schema: 2.0.0
 ---
 
@@ -23,7 +23,8 @@ Remove-LabRecipe -Recipe <PSCustomObject> [-WhatIf] [-Confirm] [<CommonParameter
 ```
 
 ## DESCRIPTION
-Remove a stored recipe. Does not remove any lab
+Remove a stored recipe.
+Does not remove any lab
 
 ## EXAMPLES
 
@@ -35,21 +36,6 @@ PS C:\> Remove-LabRecipe -Name MyBuildEnvironment
 Removes the recipe MyBuildEnvironment
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Name
 Name of the recipe
@@ -81,6 +67,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -92,7 +93,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -103,12 +104,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Management.Automation.PSCustomObject
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

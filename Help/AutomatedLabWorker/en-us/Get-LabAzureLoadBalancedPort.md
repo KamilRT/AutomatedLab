@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Get-LabAzureLoadBalancedPort
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ Get-LabAzureLoadBalancedPort [[-Port] <UInt16>] [[-DestinationPort] <UInt16>] [-
 ```
 
 ## DESCRIPTION
-Return the custom load-balanced ports of an Azure VM. Enables filtering on
-load-balanced port and destination port.
+Return the custom load-balanced ports of an Azure VM.
+Enables filtering on load-balanced port and destination port.
 Uses the InternalNotes property of a machine.
 
 ## EXAMPLES
@@ -84,10 +84,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

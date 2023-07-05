@@ -4,9 +4,220 @@
 
 ### Enhancements
 
+- Restructure project and harmonize build
+- Include client IP in JIT rules
+- Enable individual Gen1/Gen2 VMs (#1528)
+- Added some help to discover the error cause when `New-LabAzureResourceGroupDeployment` failed
+- Added stored procedures for DSC database cleanup
+
+### Bugs
+
+- Fixed a bug in 'Initialize-LWAzureVM' comparing the PowerShell version (#1517).
+- Fix issue exporting service-communication/SSL certificate to secondary AD FS nodes.
+- Calling 'Clear-Lab' otherwise when trying to change the subscription 'Get-LWAzureVMConnectionInfo'
+  may have the previous lab information and changing the subscription does not work.
+- Fix issue with DNS settings on individual Azure VMs.
+- 'Clear-LabCache' did not remove global variables used for caching.
+- AutomatedLab.Common was not copied properly to HyperV
+
+## 5.48.0 (2023-04-05)
+
+### Enhancements
+
+- Migrated AppInsights from Instrumentation Key to Connection String (#1483)
+- Enable using 32bit lab OSses as well (#1490)
+- Linux SKUs supported in Azure labs (yay, #1499)
+- Make Get-LabAvailableOperatingSystem aware of context (i.e. if Lab is on Azure)
+- Setting version of 'AutomatedLab.Common' to '2.3.17'
+
+### Bugs
+
+- Fix issue with relative ISO paths in Mount-LabIsoImage (#1491)
+- Fix wrong test for Scom Web Console (#1493)
+- Fixed an issue with the Exchange 2019 custom role that after the last update was only
+- able to deploy Exchange 2019 CU11 and CU12 because of a change in the command line parameters.
+- Fix minor issue with sending AL.Common to newly installed VMs
+- Ensure required resource providers and features are registered (#1510)
+- Fix error creating AdfsSsl certificate template during AD FS role installation.
+
+## 5.47.0 (2023-02-20)
+
+### Enhancements
+
+- Add validator to check if machine name and admin user name are the same
+- Validators now skip additional checks if SkipDeployment is used (#1442)
+- Allow integration of MOF and meta.MOF for first boot (in OS disk), enabling advanced configurations
+- Remove necessity to send Al.Common to all lab VMs
+- Speed Test URLs for Azure updated
+- Speed up cluster check
+- Include settings to configure TPM and SecureBoot
+- Additional MECM links and sample script
+- Make MECM timeout configurable for low-resource scenarios (#1479).
+- Additional logging to make troubleshooting easier.
+- Setting version of 'AutomatedLab.Common' to '2.3.5'.
+
+### Bugs
+
+- Fixed using wrong variable in `Wait-LWLabJob` (#1425).
+- Fixed output of `Add-LabDomainDefinition` (#1428)
+- Fixed OS disk ignoring Storage SKU (#1434)
+- Fixed outbound NAT rules attached to wrong resource
+- Fixed issue with disks being stored in wrong folder if resourcename was used
+- Fixed issue with SkipDeployment parameter being ignored, failing read operations (#1443)
+- Fixed issue with Azure connection info - case sensitive dictionary
+- Fixed issue with Mount-LWAzureIsoImage
+- Fixed issue with SQL setup on Azure using mounted ISO
+- Fixed display issue if AutomatedLab is deployed an Cluster cmdlets exist without cluster (#1465)
+- Fixed issue with CM account for reporting not created
+- Fixed issue when Pester <5.0 was loaded (#1418)
+- Fixed PSSession handling when by adding parameter `DoNotRemoveExistingLabPSSessions` to `Import-Lab` (#1485)
+
+## 5.46.0 (2022-11-24)
+
+### Enhancements
+
+- New configuration item UseLatestAzureProviderApi to use latest available provider instead of hardcoded values
+- Including tests for existing help content to ensure quality of help content
+- Including basic Ubuntu support: VMs can be added but are not installed due to cloud-init not working.
+- Added key for Windows 11 Enterprise Evaluation version 10.0.22621.525
+- Adding official Azure Stack Hub support
+  - Inofficially supports other Azure Environments now as well - in theory. This is hard to test without access.
+
+### Bugs
+
+- Fix issue with Azure file sync when single files are checked
+  - relative path ISOs was returned with file name, which prompted AL to always upload and fail
+- Fix issue when multiple Azure networks are deployed
+- Incompatible Azure role sizes could be selected. Filtering down to x64 to prevent that.
+- SkipDeployment was not fully utilized
+  - Cmdlets modifying machine status now skip SkipDeployment VMs, as cmdlet usage often does not make sense anyways
+
+## 5.45.0 (2022-09-01)
+
+### Enhancements
+
+- Build process includes integration tests
+- Get-LWHyperVVM: Additional setting to skip checking cluster in Get-LWHyperVVM to improve performance.
+  - Mainly useful during deployments, and would not be registered, but rather just set before `Install-Lab`
+- Some auxiliary resource names on Azure have been shortened.
+- AutomatedLab now attemtps to catch seemingly random, transient errors during resource group deployment
+
+### Bugs
+
+- Repair-LWHyperVNetworkConfig: WSMAN EnvelopeSize caused issues
+- Get-LWHyperVVM: Issue with too many VMs returned in a cluster
+- Revert to old version of ApplicationInsights which is currently distributed with PowerShell 7
+- Fixed #1365. Only the first IP of a machine is registered using `Add-HostEntry`
+- Fix remoting issues originating from Linux hosts once and for all by using SSH remoting. Cases:
+  - Windows + PS5: No change
+  - Windows + PS6+ + Azure: WSMAN preferred, Public/Private Key possible
+  - Windows + PS6+ + Hyper-V: WSMAN preferred, Public/Private Key possible. Public/Private Key more or less required for Linux workloads
+  - Linux + PS6+ + Azure + Public/Private Key
+  - And of course: Mix and match. Some eligible targets using SSH, others WSMAN. =======
+- DoNotPrompt now also enforces Enable-LabHostRemoting.
+- Fixed #1371. Assigning PostInstallationActivity resulted into a prompt due to missing arguments.
+- Add more retry attempts to Get-LWAzureVm to address issues like #1362
+
+## 5.44.0 (2022-07-22)
+
+### Enhancements
+
+- Enabling additional role sizes, who are we to judge
+- Set-LabDefaultOperatingSystem now supports Azure as well
+- Supporting arbitrary reference disk paths for individual VMs
+- Enabling AutomatedLab to activate Windows VMs either online or via KMS (Active Directory based or standalone server)
+
+### Bugs
+
+- Fixing serialization issue in SCOM role
+- Fixing issue with Azure role sizes requiring Gen 2 VMs
+- Fixing issue with Az.Storage module not being able to use backslashes
+- Force-create DeployDebug folder in case it does not exist, which occasionally led to issues with msi installations
+- Fixing SharePoint issue if IP addresses are used instead of host names
+
+## 5.43.0 (2022-06-30)
+
+### Enhancements
+
+- New cmdlets Request-LabAzureJitAccess and Enable-LabAzureJitAccess to configure JIT access to Azure VMs, ports 22,3389,5985
+- Flexible MAC Address prefix to better take care of MAC address pools
+- SCVMM role now handles Console setup better (less stuff is installed)
+- Additional parameter for New-LabSourcesFolder to skip downloads.
+- Added new OrganizationalUnit parameter to Add-LabMachineDefinition
+- LabBuilder migrated to Pode
+- New-LabBaseImages now supports creating base images for individual operating systems without having a lab
+
+### Bugs
+
+- Fixed issue with cluster roles not being cleaned up properly (thanks @Trentent !)
+- Fixed issue with Get-LWHyperVVm and clusters (thanks @Trentent !)
+- Fixing the (once again) updated kickstart file content - we now carry around three different flavors.
+- NIC order now preserved, specification of default NIC possible as well for connections
+- Fixed issue with cluster resources being added a second time
+- Fixed function importing for the HostsFile module
+
+## 5.42.0 (2022-05-05)
+
+### Enhancements
+- Added auto-completer for parameter 'SnapshotName'.
+- Added support for files in a folder copy in Copy-LabFileItem.
+- 'Invoke-LabDscConfiguration' accepts parameters for DSC configuration now.
+- AL now testing only for required Az modules
+- New function Install-LabAzureRequiredModule
+- Renamed 'Remove-DeploymentFiles' to 'Remove-LabDeploymentFiles' according to the naming convention and extended
+  the function's scope of work.
+- Finally adding cluster-awareness
+  - If AutomatedLab is executed locally on a cluster node, the lab VMs are added to the cluster
+- Adding hidden setting DoNotPrompt as an attempt to not prompt.
+  - Does not include prompts that can be turned off like Enable-LabHostRemoting -Force
+- Updated docs
+- Disks now also support PartitionStyle parameter
+- Fixing issue with Hyper-V where network adapter MAC address went missing, breaking cmdlets like Repair-LWHyperVNetworkConfig
+
+### Bugs
+- Fixing issue with Get-LabAzureAvailableRoleSize by filtering earlier.
+- Corrected various issues in the SharePoint role installation script.
+- Corrected incorrect HERE string in the PrepareRootDomain script
+- Fixes #1273: Error calling 'Show-LabDeploymentSummary'.
+- Fix bug in New-LabPS/CIMSession where the IP address was not used even though it was preferred.
+- Fixes #1293: Set-DscLocalConfigurationManagerConfiguration throws error when successful.
+- DelayBetweenComputers was ignored
+- Fixed lab location. Sometimes the 'Lab.xml' was stored in 'C:\ProgramData\AutomatedLab' directly.
+- Removing unsupported kickstart parameter for old CentOS versions
+- Removing unused DefaultStorageAccount-Cmdlets
+
+## 5.41.0 (2022-01-31)
+
+### Enhancements
+- Performance improvements of DSC Pullserver reports from DscWorkshop
+  - precalculation of values from JSON based status reports at insert time
+- Added 2022 and Win11 to Azure image name table
+- Add new columns to TaggingData table and view of DSC Pullserver database.
+- Enabled pipelining for Remove-Lab, Start/Stop/Restart/Wait/Remove-LabVm, Wait-LabVMRestart, Wait-LabVMShutdown
+- Pull Server now defaults to HTTPS if CA is deployed, otherwise plain HTTP (Validator removed as well)
+- Enabling additional parameter LocationName in Get-LabAzureAvailableRoleSize
+
+### Bugs
+- Fixing issue with data disks on Azure
+- Fixed a connection bug in 'Copy-LabALCommon' with CredSsp
+- Fixed issue with AutomatedLab.Ships where folder browsing would not work
+- Fixing issue with duplicate MAC addresses in case lab deployments are done in parallel
+- CustomRole does not pick up configured properties
+- Including ProductKeys file in module build for offline environments
+- Fixing a bug with Azure-based labs which would stall during Add-LabAzureSubscription
+- Fixed display bugs in 'Remove-Lab'.
+
+## 5.40.0 (2021-10-13)
+
+### Enhancements
+
 - Restart-LabVm stability on Azure improved
   - Does not check event log any longer but uses CIM instead to check if the reboot was successfully executed
 - Azure managed disks now actually support all the parameters that Add-LabDiskDefinition exposes
+- Configuration Manager custom role(s) converted to built-in role
+  -  Thanks to the excellent work of @codaamok we were able to include Configuration Manager in our built-in roles
+- Deployment validation now really includes hook for Custom Roles
+- Windows 11 GLVM keys added
 
 ### Bugs
 
@@ -18,6 +229,7 @@
 - New-LabADSubnet was not called if there is only a RootDC defined.
 - Handling SQL inis when on Azure now actually working by referring to
 - Fixed typos and added SkipDeployment to the filter
+- Output of Get-LabVhdx fixed, was reporting wrong path
 
 ## 5.39.0 (2021-08-20)
 
@@ -129,7 +341,7 @@
   - Cache will not entirely be rebuilt, additional OSs will be added
 - New Import-LabDefinition cmdlet
 - Various updates to custom roles CM-1902 and CM-2002: (thank you @codaamok !)
-  - In both CM-1902 and CM-2002: 
+  - In both CM-1902 and CM-2002:
     - Checks for site update failure, and site update download failures, and throw exception if one occurs
     - Improved site update success rate by adding a wait for idle state on SMS_SITE_COMPONENT_MANAGER
     - Added Defender antivirus exclusions as per Microsoft recommendations
@@ -179,7 +391,7 @@
 
 - Aligned the name of the 'DscMofEncryption' template with its display name
 - Fixed issue with Install-LabSoftwarePackage not working for Azure VMs outside of $LabSources (Issue #989)
-- Installing RDS certificates and calling the Pester tests only if $performAll or explicitly defined. Before Install-Lab 
+- Installing RDS certificates and calling the Pester tests only if $performAll or explicitly defined. Before Install-Lab
   threw errors in case only some parts of the lab deployment should be done.
 - Remove-LabVm now removes associated resources on Azure (Issue #998 and #997)
 - New-LabSourcesFolder now actually copies dev branch.
@@ -226,7 +438,7 @@
   - No interaction is done in AL using the resource name. This is only for the purpose of
     deploying the same lab on the same host with different resource names (VM names, switch names)
 - Enabling configuration of allowed inbound IP addresses for Azure load balancer
-  
+
 ### Bug Fixes
 - Get-LabInternetFile did not work on Azure when the Uri did not contain a file name like 'https://go.microsoft.com/fwlink/?Linkid=85215'.
 - Decreased runtime of installation on Azure by disabling the Azure LabSources check in Copy-LabAlCommon
@@ -664,7 +876,7 @@ downloaded through PSGallery
   - OS < 2008 R2: Cluster cmdlets work with 2008 R2 and above
   - Duplicate cluster IPs
   - Fewer than 2 nodes per cluster
-  - Sample script that deploys three clusters with varying configurations  
+  - Sample script that deploys three clusters with varying configurations
 - SQL Sample Database Installation revised
   - Sample DBs will now be downloaded
   - Customization of download links in AutomatedLab.psd1

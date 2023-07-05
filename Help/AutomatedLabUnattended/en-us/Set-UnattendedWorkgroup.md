@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabUnattended-help.xml
 Module Name: AutomatedLabUnattended
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabUnattended/en-us/Set-UnattendedWorkgroup
 schema: 2.0.0
 ---
 
@@ -12,8 +12,24 @@ Configures the workgroup of a non domain-joined system
 
 ## SYNTAX
 
+### Windows (Default)
 ```
-Set-UnattendedWorkgroup [-WorkgroupName] <String> [-IsKickstart] [-IsAutoYast] [<CommonParameters>]
+Set-UnattendedWorkgroup [-WorkgroupName] <String> [<CommonParameters>]
+```
+
+### CloudInit
+```
+Set-UnattendedWorkgroup [-WorkgroupName] <String> [-IsCloudInit] [<CommonParameters>]
+```
+
+### Yast
+```
+Set-UnattendedWorkgroup [-WorkgroupName] <String> [-IsAutoYast] [<CommonParameters>]
+```
+
+### Kickstart
+```
+Set-UnattendedWorkgroup [-WorkgroupName] <String> [-IsKickstart] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +51,22 @@ Indicates that this setting is placed in an AutoYAST file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Yast
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsCloudInit
+Indicates that this setting is placed in a cloudinit file
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: CloudInit
 Aliases:
 
 Required: False
@@ -50,12 +81,12 @@ Indicates that this setting is placed in a Kickstart file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Kickstart
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,10 +112,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

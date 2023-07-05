@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Add-LWAzureLoadBalancedPort
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ Add-LWAzureLoadBalancedPort [-Port] <UInt16> [-DestinationPort] <UInt16> [-Compu
 ```
 
 ## DESCRIPTION
-Add a new port to the Azure load balancer for the current lab. Please refer to the official
-documentation to learn more about the limitations of the inbound NAT rules of a load balancer.
+Add a new port to the Azure load balancer for the current lab.
+Please refer to the official documentation to learn more about the limitations of the inbound NAT rules of a load balancer.
 
 ## EXAMPLES
 
@@ -63,7 +63,8 @@ Accept wildcard characters: False
 ```
 
 ### -Port
-The port on the load balancer. Cannot be in use already.
+The port on the load balancer.
+Cannot be in use already.
 
 ```yaml
 Type: UInt16
@@ -83,10 +84,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

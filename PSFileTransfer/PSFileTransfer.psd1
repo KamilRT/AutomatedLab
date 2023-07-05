@@ -11,7 +11,7 @@
 
     CompanyName            = 'AutomatedLab Team'
 
-    Copyright              = '2019'
+    Copyright              = '2022'
 
     Description            = 'This module packages functions created by Lee Holmes for transfering files over PowerShell Remoting'
 
@@ -19,11 +19,23 @@
 
     DotNetFrameworkVersion = '2.0'
 
-    ModuleList             = @('PSFileTransfer')
+    FunctionsToExport      = 'Send-Directory', 'Send-File', 'Receive-Directory', 'Receive-File'
 
-    FunctionsToExport      = 'Copy-LabFileItem', 'Send-Directory', 'Send-File', 'Receive-Directory', 'Receive-File'
+    AliasesToExport        = '??'
 
-    FileList               = @('PSFileTransfer.psm1', 'PSFileTransfer.psd1')
+    FileList               = @()
 
     RequiredModules        = @()
+
+    PrivateData       = @{
+
+        PSData = @{
+            Prerelease   = ''
+            Tags         = @('FileTransfer')
+            LicenseUri   = 'https://github.com/AutomatedLab/AutomatedLab/blob/main/LICENSE'
+            ProjectUri   = 'https://github.com/AutomatedLab/AutomatedLab'
+            IconUri      = 'https://github.com/AutomatedLab/AutomatedLab/blob/master/Assets/Automated-Lab_icon256.png'
+            ReleaseNotes = ''
+        }
+    }
 }

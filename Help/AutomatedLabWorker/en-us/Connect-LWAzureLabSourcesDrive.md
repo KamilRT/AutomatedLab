@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Connect-LWAzureLabSourcesDrive
 schema: 2.0.0
 ---
 
@@ -17,8 +17,7 @@ Connect-LWAzureLabSourcesDrive [-Session] <PSSession> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Connect the Azure File Share 'LabSources' in a session so that file copies
-and installations are possible using $LabSources
+Connect the Azure File Share 'LabSources' in a session so that file copies and installations are possible using $LabSources
 
 ## EXAMPLES
 
@@ -52,10 +51,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

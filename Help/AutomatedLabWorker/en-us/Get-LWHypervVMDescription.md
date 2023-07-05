@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Get-LWHypervVMDescription
 schema: 2.0.0
 ---
 
@@ -17,8 +17,8 @@ Get-LWHypervVMDescription [-ComputerName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Return the serialized notes field of a Hyper-V VM. The Notes are used to store a bunch of
-information on the status that AutomatedLab found the machine in and is serialized as XML.
+Return the serialized notes field of a Hyper-V VM.
+The Notes are used to store a bunch of information on the status that AutomatedLab found the machine in and is serialized as XML.
 
 ## EXAMPLES
 
@@ -52,10 +52,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

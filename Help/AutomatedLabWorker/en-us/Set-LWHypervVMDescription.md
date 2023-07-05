@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Set-LWHypervVMDescription
 schema: 2.0.0
 ---
 
@@ -49,7 +49,8 @@ Accept wildcard characters: False
 ```
 
 ### -Hashtable
-A hashtable containing notes. Values will be converted to String
+A hashtable containing notes.
+Values will be converted to String
 
 ```yaml
 Type: Hashtable
@@ -69,10 +70,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

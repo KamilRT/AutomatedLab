@@ -1,23 +1,41 @@
 ---
 external help file: AutomatedLabUnattended-help.xml
 Module Name: AutomatedLabUnattended
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabUnattended/en-us/Add-UnattendedRenameNetworkAdapters
 schema: 2.0.0
 ---
 
 # Add-UnattendedRenameNetworkAdapters
 
 ## SYNOPSIS
-Add script to rename network adapters. Windows only.
+Add script to rename network adapters.
+Windows only.
 
 ## SYNTAX
 
+### Windows (Default)
 ```
-Add-UnattendedRenameNetworkAdapters [-IsKickstart] [-IsAutoYast] [<CommonParameters>]
+Add-UnattendedRenameNetworkAdapters [<CommonParameters>]
+```
+
+### Kickstart
+```
+Add-UnattendedRenameNetworkAdapters [-IsKickstart] [<CommonParameters>]
+```
+
+### Yast
+```
+Add-UnattendedRenameNetworkAdapters [-IsAutoYast] [<CommonParameters>]
+```
+
+### CloudInit
+```
+Add-UnattendedRenameNetworkAdapters [-IsCloudInit] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add script to rename network adapters. Windows only.
+Add script to rename network adapters.
+Windows only.
 
 ## EXAMPLES
 
@@ -35,7 +53,22 @@ Indicates that this setting is placed in an AutoYAST file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Yast
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsCloudInit
+Indicates that this setting is placed in a cloudinit file
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: CloudInit
 Aliases:
 
 Required: False
@@ -50,12 +83,12 @@ Indicates that this setting is placed in a Kickstart file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Kickstart
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -66,10 +99,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

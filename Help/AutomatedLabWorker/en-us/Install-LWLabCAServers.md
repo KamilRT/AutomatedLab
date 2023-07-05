@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Install-LWLabCAServers
 schema: 2.0.0
 ---
 
@@ -193,6 +193,81 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CertsValidityPeriod
+{{ Fill CertsValidityPeriod Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 40
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CertsValidityPeriodUnits
+{{ Fill CertsValidityPeriodUnits Description }}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 41
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputerName
+{{ Fill ComputerName Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CpsText
+{{ Fill CpsText Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 16
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CpsUrl
+{{ Fill CpsUrl Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 15
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CRLDeltaPeriod
 {{ Fill CRLDeltaPeriod Description }}
 
@@ -283,81 +358,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CertsValidityPeriod
-{{ Fill CertsValidityPeriod Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 40
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CertsValidityPeriodUnits
-{{ Fill CertsValidityPeriodUnits Description }}
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 41
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ComputerName
-{{ Fill ComputerName Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CpsText
-{{ Fill CpsText Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 16
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CpsUrl
-{{ Fill CpsUrl Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 15
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CryptoProviderName
 {{ Fill CryptoProviderName Description }}
 
@@ -388,21 +388,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DoNotLoadDefaultTemplates
-{{ Fill DoNotLoadDefaultTemplates Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 44
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DomainName
 {{ Fill DomainName Description }}
 
@@ -413,6 +398,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DoNotLoadDefaultTemplates
+{{ Fill DoNotLoadDefaultTemplates Description }}
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 44
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -739,10 +739,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

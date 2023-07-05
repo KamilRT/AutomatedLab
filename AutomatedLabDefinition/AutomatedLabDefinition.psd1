@@ -11,7 +11,7 @@
 
     CompanyName            = 'AutomatedLab Team'
 
-    Copyright              = '2019'
+    Copyright              = '2022'
 
     Description            = 'The module creates the lab and machine definition for the AutomatedLab module saved in XML'
 
@@ -19,17 +19,11 @@
 
     DotNetFrameworkVersion = '4.0'
 
-    ModuleList             = @('AutomatedLabDefinition')
+    NestedModules          = @()
 
-    NestedModules          = @('AutomatedLabDefinitionNetwork.psm1', 'AutomatedLabDefinitionAzureServices.psm1')
+    FileList               = @()
 
-    FileList               = @('AutomatedLabDefinition.psm1', 'AutomatedLabDefinition.init.ps1', 'AutomatedLabDefinitionNetwork.psm1', 'AutomatedLabDefinitionAzureServices.psm1')
-
-    RequiredModules        = @(
-        'AutomatedLabUnattended'
-        'PSLog'
-        'PSFramework'
-    )
+    RequiredModules        = @( )
 
     CmdletsToExport        = @()
 
@@ -70,5 +64,18 @@
 
     AliasesToExport = @(
         'Get-LabPostInstallationActivity'
+        'Get-LabPreInstallationActivity'
     )
+
+    PrivateData       = @{
+
+        PSData = @{
+            Prerelease   = ''
+            Tags         = @('LabDefinition', 'Lab', 'LabAutomation', 'HyperV', 'Azure')
+            LicenseUri   = 'https://github.com/AutomatedLab/AutomatedLab/blob/main/LICENSE'
+            ProjectUri   = 'https://github.com/AutomatedLab/AutomatedLab'
+            IconUri      = 'https://github.com/AutomatedLab/AutomatedLab/blob/master/Assets/Automated-Lab_icon256.png'
+            ReleaseNotes = ''
+        }
+    }
 }

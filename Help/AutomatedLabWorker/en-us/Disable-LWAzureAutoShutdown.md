@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Disable-LWAzureAutoShutdown
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Internal worker to disable Azure Auto Shutdown
 ## SYNTAX
 
 ```
-Disable-LWAzureAutoShutdown [[-ComputerName] <String[]>] [-Wait]
+Disable-LWAzureAutoShutdown [[-ComputerName] <String[]>] [-Wait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,15 +23,15 @@ Internal worker to disable Azure Auto Shutdown
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Disable-LWAzureAutoShutdown -ComputerName Host1, Host2 -Wait
 ```
 
-{{ Add example description here }}
+Disable the Azure auto shutdown by removing the configuration, wait for it to finish
 
 ## PARAMETERS
 
 ### -ComputerName
-{{ Fill ComputerName Description }}
+List of hosts to disable auto shutdown for
 
 ```yaml
 Type: String[]
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Wait
-{{ Fill Wait Description }}
+Indicates that cmdlet should wait for completion
 
 ```yaml
 Type: SwitchParameter
@@ -55,18 +55,21 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

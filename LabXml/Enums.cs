@@ -10,6 +10,12 @@ namespace AutomatedLab
         Client = 2
     }
 
+    public enum PartitionStyle
+    {
+        MBR,
+        GPT
+    }
+
     public enum VirtualizationHost
     {
         HyperV = 1,
@@ -27,7 +33,8 @@ namespace AutomatedLab
     {
         Unknown,
         RedHat,
-        SuSE
+        SuSE,
+        Ubuntu
     }
 
     [Flags]
@@ -67,7 +74,7 @@ namespace AutomatedLab
         Tfs2017 = 2147483648,
         TfsBuildWorker = 4294967296,
         Tfs2018 = 8589934592,
-        SQLServer = SQLServer2008 | SQLServer2008R2 | SQLServer2012 | SQLServer2014 | SQLServer2016 | SQLServer2017 | SQLServer2019,
+        SQLServer = SQLServer2008 | SQLServer2008R2 | SQLServer2012 | SQLServer2014 | SQLServer2016 | SQLServer2017 | SQLServer2019 | SQLServer2022,
         HyperV = 17179869184,
         AzDevOps = 34359738368,
         SharePoint2019 = 68719476736,
@@ -75,7 +82,7 @@ namespace AutomatedLab
         WindowsAdminCenter = 137438953472,
         Scvmm2016 = 274877906944,
         Scvmm2019 = 549755813888,
-        SCVMM = Scvmm2016 | Scvmm2019,
+        SCVMM = Scvmm2016 | Scvmm2019 | Scvmm2022,
         ScomManagement = 1099511627776,
         ScomConsole = 2199023255552,
         ScomWebConsole = 4398046511104,
@@ -94,7 +101,10 @@ namespace AutomatedLab
         RemoteDesktopConnectionBroker = 4503599627370496,
         RemoteDesktopLicensing = 9007199254740992,
         RemoteDesktopVirtualizationHost = 18014398509481984,
-        RDS = RemoteDesktopConnectionBroker | RemoteDesktopGateway | RemoteDesktopLicensing | RemoteDesktopSessionHost | RemoteDesktopVirtualizationHost | RemoteDesktopWebAccess
+        RDS = RemoteDesktopConnectionBroker | RemoteDesktopGateway | RemoteDesktopLicensing | RemoteDesktopSessionHost | RemoteDesktopVirtualizationHost | RemoteDesktopWebAccess,
+        ConfigurationManager = 36028797018963968,
+        Scvmm2022 = 72057594037927936,
+        SQLServer2022 = 144115188075855872
     }
 
     public enum ActiveDirectoryFunctionalLevel
@@ -127,5 +137,12 @@ namespace AutomatedLab
         ReachedByAutomatedLab = 1,
         EnabledCredSsp = 2,
         NetworkAdapterBindingCorrected = 4
+    }
+
+    public enum Architecture
+    {
+        x86 = 0, // Map DISM output
+        x64 = 9, // Map DISM output
+        Unknown
     }
 }

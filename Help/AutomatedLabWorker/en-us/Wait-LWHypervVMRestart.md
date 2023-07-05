@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Wait-LWHypervVMRestart
 schema: 2.0.0
 ---
 
@@ -24,10 +24,10 @@ Monitors the uptime of a VM to wait for it to restart
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Wait-LWHypervVMRestart -ComputerName host1,host2 -TimeoutInMinutes 10
 ```
 
-{{ Add example description here }}
+Wait 10 minutes for a restart of host1 and host2, for example because of a pending installation.
 
 ## PARAMETERS
 
@@ -47,8 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorJob
-Keep monitoring on or more jobs until the timeout is reached or the uptime of the
-VM is reset
+Keep monitoring on or more jobs until the timeout is reached or the uptime of the VM is reset
 
 ```yaml
 Type: Job[]
@@ -72,13 +71,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ProgressIndicator
-Interval in seconds that a . should be written to the console
+Interval in seconds that a .
+should be written to the console
 
 ```yaml
 Type: Int32
@@ -128,10 +128,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

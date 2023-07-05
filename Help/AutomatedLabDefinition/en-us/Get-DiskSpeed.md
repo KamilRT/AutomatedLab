@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Get-DiskSpeed
 schema: 2.0.0
 ---
 
@@ -20,7 +20,8 @@ Get-DiskSpeed [-DriveLetter] <String> [[-Interations] <Int32>] [<CommonParameter
 Measures the disk speed of the specified logical drive letter.
 This is used by AutomatedLab when determining optimal placement of harddisk files of Hyper-V virtual machines.
 
-This requires the tool WinSAT which is part of the module deployment. As such, this cmdlet only works on Windows.
+This requires the tool WinSAT which is part of the module deployment.
+As such, this cmdlet only works on Windows.
 
 ## EXAMPLES
 
@@ -32,8 +33,6 @@ Get-DiskSpeed -DriveLetter C
 Measure disk speed of drive C
 
 ### Example 2
-
-
 ```powershell
 Get-DiskSpeed -DriveLetter D: -Iterations 5
 ```
@@ -82,3 +81,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

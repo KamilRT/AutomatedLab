@@ -11,7 +11,7 @@
 
     CompanyName            = 'AutomatedLab Team'
 
-    Copyright              = '2019'
+    Copyright              = '2022'
 
     Description            = 'This module provides management of hosts file content'
 
@@ -19,11 +19,21 @@
 
     DotNetFrameworkVersion = '4.0'
 
-    ModuleList             = @('HostsFile')
+    FunctionsToExport      = 'Add-HostEntry', 'Clear-HostFile', 'Get-HostEntry', 'Get-HostFile', 'Remove-HostEntry'
 
-    FunctionsToExport      = 'Add-HostEntry', 'Clear-HostFile', 'Get-HostEntry', 'Open-HostFile', 'Remove-HostEntry', 'Save-HostFile'
+    FileList               = @()
 
-    FileList               = @('HostsFile.psm1', 'HostsFile.psd1')
+    RequiredModules        = @( )
 
-    RequiredModules        = @('PSFramework')
+    PrivateData            = @{
+
+        PSData = @{
+            Prerelease   = ''
+            Tags         = @('HostFile', 'HostEntry')
+            LicenseUri   = 'https://github.com/AutomatedLab/AutomatedLab/blob/main/LICENSE'
+            ProjectUri   = 'https://github.com/AutomatedLab/AutomatedLab'
+            IconUri      = 'https://github.com/AutomatedLab/AutomatedLab/blob/master/Assets/Automated-Lab_icon256.png'
+            ReleaseNotes = ''
+        }
+    }
 }

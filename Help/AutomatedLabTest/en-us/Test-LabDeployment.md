@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabTest-help.xml
-Module Name: automatedlabtest
-online version:
+Module Name: AutomatedLabTest
+online version: https://automatedlab.org/en/latest/AutomatedLabTest/en-us/Test-LabDeployment
 schema: 2.0.0
 ---
 
@@ -24,8 +24,8 @@ Test-LabDeployment [-SampleScriptsPath <String>] [-Filter <String>] [-All] [-Log
 ```
 
 ## DESCRIPTION
-Test a lab deployment. Optionally replace values in the scripts like image versions or Azure
-resource group names.
+Test a lab deployment.
+Optionally replace values in the scripts like image versions or Azure resource group names.
 
 ## EXAMPLES
 
@@ -66,7 +66,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,10 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

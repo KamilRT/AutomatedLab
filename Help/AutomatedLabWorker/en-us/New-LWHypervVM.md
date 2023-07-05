@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/New-LWHypervVM
 schema: 2.0.0
 ---
 
@@ -17,7 +17,8 @@ New-LWHypervVM [-Machine] <Machine> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a new Hyper-V VM. Takes care of both Windows and Linux VMs.
+Create a new Hyper-V VM.
+Takes care of both Windows and Linux VMs.
 
 ## EXAMPLES
 
@@ -51,10 +52,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

@@ -13,19 +13,28 @@
 
     CompanyName            = 'AutomatedLab Team'
 
-    Copyright              = '2019'
+    Copyright              = '2022'
 
     PowerShellVersion      = '5.1'
 
     DotNetFrameworkVersion = '3.5'
 
-    ModuleList             = @('PSLog')
+    RequiredModules        = @( )
 
-    RequiredModules        = @('PSFramework')
+    FunctionsToExport      = @(
+        'Get-CallerPreference',
+        'Write-LogError',
+        'Write-LogFunctionEntry',
+        'Write-LogFunctionExit',
+        'Write-LogFunctionExitWithError',
+        'Write-ProgressIndicator',
+        'Write-ProgressIndicatorEnd',
+        'Write-ScreenInfo'
+    )
 
     PrivateData            = @{
         AutoStart      = $true
-        DefaultFolder  = $null
+        DefaultFolder  = ''
         DefaultName    = 'PSLog'
         Level          = 'All'
         Silent         = $false
@@ -33,5 +42,14 @@
             'System.Management.Automation.ScriptBlock'
         )
         TruncateLength = 50
+
+        PSData         = @{
+            Prerelease   = ''
+            Tags         = @('Logging')
+            LicenseUri   = 'https://github.com/AutomatedLab/AutomatedLab/blob/main/LICENSE'
+            ProjectUri   = 'https://github.com/AutomatedLab/AutomatedLab'
+            IconUri      = 'https://github.com/AutomatedLab/AutomatedLab/blob/master/Assets/Automated-Lab_icon256.png'
+            ReleaseNotes = ''
+        }
     }
 }

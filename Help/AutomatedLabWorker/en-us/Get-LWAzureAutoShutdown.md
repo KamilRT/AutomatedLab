@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Get-LWAzureAutoShutdown
 schema: 2.0.0
 ---
 
@@ -23,10 +23,10 @@ Internal worker to list Azure Auto Shutdown
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-LWAzureAutoShutdown
 ```
 
-{{ Add example description here }}
+Return a list of auto shutdown times and time zones for all lab VMs running on azure
 
 ## PARAMETERS
 
@@ -36,10 +36,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

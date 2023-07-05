@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/Export-LabDefinition
 schema: 2.0.0
 ---
 
@@ -26,25 +26,9 @@ Exports the whole lab definition as XML files in the standard path $env:ProgramD
 PS C:\> Export-LabDefinition -Force
 ```
 
-Export the current lab definition (Get-LabDefinition, Get-Lab) to $env:ProgramData\AutomatedLab\Labs, overwriting
-any existing files
+Export the current lab definition (Get-LabDefinition, Get-Lab) to $env:ProgramData\AutomatedLab\Labs, overwriting any existing files
 
 ## PARAMETERS
-
-### -Force
-Overwrite existing XML files
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ExportDefaultUnattendedXml
 Export the unattend.xml for all machines as well
@@ -56,7 +40,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Overwrite existing XML files
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -71,7 +70,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,3 +85,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

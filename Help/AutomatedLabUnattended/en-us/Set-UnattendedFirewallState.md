@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabUnattended-help.xml
 Module Name: AutomatedLabUnattended
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabUnattended/en-us/Set-UnattendedFirewallState
 schema: 2.0.0
 ---
 
@@ -12,8 +12,24 @@ Enable or disable the OS firewall
 
 ## SYNTAX
 
+### Windows (Default)
 ```
-Set-UnattendedFirewallState [-State] <Boolean> [-IsKickstart] [-IsAutoYast] [<CommonParameters>]
+Set-UnattendedFirewallState [-State] <Boolean> [<CommonParameters>]
+```
+
+### CloudInit
+```
+Set-UnattendedFirewallState [-State] <Boolean> [-IsCloudInit] [<CommonParameters>]
+```
+
+### Yast
+```
+Set-UnattendedFirewallState [-State] <Boolean> [-IsAutoYast] [<CommonParameters>]
+```
+
+### Kickstart
+```
+Set-UnattendedFirewallState [-State] <Boolean> [-IsKickstart] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +51,22 @@ Indicates that this setting is placed in an AutoYAST file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Yast
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsCloudInit
+Indicates that this setting is placed in a cloudinit file
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: CloudInit
 Aliases:
 
 Required: False
@@ -50,12 +81,12 @@ Indicates that this setting is placed in a Kickstart file
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Kickstart
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -81,10 +112,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

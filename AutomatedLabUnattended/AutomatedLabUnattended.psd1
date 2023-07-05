@@ -11,7 +11,7 @@
 
     CompanyName            = 'AutomatedLab Team'
 
-    Copyright              = '2019'
+    Copyright              = '2022'
 
     Description            = 'The module is managing settings inside an unattended.xml file'
 
@@ -19,9 +19,41 @@
 
     DotNetFrameworkVersion = '4.0'
 
-    ModuleList             = @('AutomatedLabUnattended')
+    RequiredModules        = @( )
 
-    FileList               = @('AutomatedLabUnattended.psm1')
+    FunctionsToExport      = @(
+        'Add-UnattendedNetworkAdapter',
+        'Add-UnattendedRenameNetworkAdapters',
+        'Add-UnattendedSynchronousCommand',
+        'Export-UnattendedFile',
+        'Get-UnattendedContent',
+        'Import-UnattendedContent',
+        'Import-UnattendedFile',
+        'Set-UnattendedAdministratorName',
+        'Set-UnattendedAdministratorPassword',
+        'Set-UnattendedAntiMalware',
+        'Set-UnattendedAutoLogon',
+        'Set-UnattendedComputerName',
+        'Set-UnattendedDomain',
+        'Set-UnattendedFirewallState',
+        'Set-UnattendedIpSettings',
+        'Set-UnattendedLocalIntranetSites',
+        'Set-UnattendedPackage',
+        'Set-UnattendedProductKey',
+        'Set-UnattendedTimeZone',
+        'Set-UnattendedUserLocale',
+        'Set-UnattendedWorkgroup'
+    )
+
+    PrivateData            = @{
+
+        PSData = @{
+            Prerelease   = ''
+            Tags         = @('UnattendedFile', 'Kickstart', 'AutoYast', 'Lab', 'LabAutomation', 'HyperV', 'Azure')
+            LicenseUri   = 'https://github.com/AutomatedLab/AutomatedLab/blob/main/LICENSE'
+            ProjectUri   = 'https://github.com/AutomatedLab/AutomatedLab'
+            IconUri      = 'https://github.com/AutomatedLab/AutomatedLab/blob/master/Assets/Automated-Lab_icon256.png'
+            ReleaseNotes = ''
+        }
+    }
 }
-
-

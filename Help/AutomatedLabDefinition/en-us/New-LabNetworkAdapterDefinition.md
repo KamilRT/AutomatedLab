@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabDefinition-help.xml
 Module Name: AutomatedLabDefinition
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabDefinition/en-us/New-LabNetworkAdapterDefinition
 schema: 2.0.0
 ---
 
@@ -19,7 +19,8 @@ New-LabNetworkAdapterDefinition -VirtualSwitch <String> [-InterfaceName <String>
  [-IPv6AddressPrefix <Int32>] [-IPv6Gateway <String>] [-IPv6DNSServers <String[]>]
  [-ConnectionSpecificDNSSuffix <String>] [-AppendParentSuffixes <Boolean>] [-AppendDNSSuffixes <String[]>]
  [-RegisterInDNS <Boolean>] [-DnsSuffixInDnsRegistration <Boolean>] [-NetBIOSOptions <String>]
- [-AccessVLANID <Int32>] [-ManagementAdapter <Boolean>] [<CommonParameters>]
+ [-AccessVLANID <Int32>] [-ManagementAdapter <Boolean>] [-MacAddress <String>] [-Default <Boolean>]
+ [<CommonParameters>]
 ```
 
 ### dhcp
@@ -28,7 +29,7 @@ New-LabNetworkAdapterDefinition -VirtualSwitch <String> [-InterfaceName <String>
  [-Ipv4DNSServers <IPAddress[]>] [-IPv6DNSServers <String[]>] [-ConnectionSpecificDNSSuffix <String>]
  [-AppendParentSuffixes <Boolean>] [-AppendDNSSuffixes <String[]>] [-RegisterInDNS <Boolean>]
  [-DnsSuffixInDnsRegistration <Boolean>] [-NetBIOSOptions <String>] [-AccessVLANID <Int32>]
- [-ManagementAdapter <Boolean>] [<CommonParameters>]
+ [-ManagementAdapter <Boolean>] [-MacAddress <String>] [-Default <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,15 +50,90 @@ In order to create a machine capable of routing, you can assign two network adap
 
 ## PARAMETERS
 
-### -VirtualSwitch
-The name of the virtual switch.
+### -AccessVLANID
+The VLAN ID to configure
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppendDNSSuffixes
+List of DNS suffixes to append
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppendParentSuffixes
+Indicates that parent suffixes should be appended to the DNS suffix
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConnectionSpecificDNSSuffix
+The DNS suffix (Windows)
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Default
+Indicates that this adapter will be the default adapter
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DnsSuffixInDnsRegistration
+Indicates that the DNS suffix should be included in the DNS registration
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -94,12 +170,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ipv4Gateway
-The gateway that should be used
+### -Ipv4DNSServers
+The DNS servers to use
 
 ```yaml
-Type: IPAddress
-Parameter Sets: manual
+Type: IPAddress[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -109,12 +185,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Ipv4DNSServers
-The DNS servers to use
+### -Ipv4Gateway
+The gateway that should be used
 
 ```yaml
-Type: IPAddress[]
-Parameter Sets: (All)
+Type: IPAddress
+Parameter Sets: manual
 Aliases:
 
 Required: False
@@ -154,21 +230,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IPv6Gateway
-The IPv6 gateway to configure
-
-```yaml
-Type: String
-Parameter Sets: manual
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IPv6DNSServers
 The IPv6 DNS server list
 
@@ -184,8 +245,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConnectionSpecificDNSSuffix
-The DNS suffix (Windows)
+### -IPv6Gateway
+The IPv6 gateway to configure
+
+```yaml
+Type: String
+Parameter Sets: manual
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MacAddress
+The hardware address of the virtual adapter
 
 ```yaml
 Type: String
@@ -199,53 +275,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppendParentSuffixes
-Indicates that parent suffixes should be appended to the DNS suffix
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AppendDNSSuffixes
-List of DNS suffixes to append
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RegisterInDNS
-Indicates that the name should be registered in DNS
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DnsSuffixInDnsRegistration
-Indicates that the DNS suffix should be included in the DNS registration
+### -ManagementAdapter
+Indicates that this adapter is used as a management adapter
 
 ```yaml
 Type: Boolean
@@ -274,8 +305,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RegisterInDNS
+Indicates that the name should be registered in DNS
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UseDhcp
-Indicates that DHCP should be used. Useful e.g. for the Default Switch
+Indicates that DHCP should be used.
+Useful e.g.
+for the Default Switch
 
 ```yaml
 Type: SwitchParameter
@@ -284,35 +332,20 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AccessVLANID
-The VLAN ID to configure
+### -VirtualSwitch
+The name of the virtual switch.
 
 ```yaml
-Type: Int32
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagementAdapter
-{{ Fill ManagementAdapter Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -329,3 +362,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

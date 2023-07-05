@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLabWorker-help.xml
 Module Name: AutomatedLabWorker
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLabWorker/en-us/Test-IpInSameSameNetwork
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Test if an IP address is in the same network as another address
 ## SYNTAX
 
 ```
-Test-IpInSameSameNetwork [[-Ip1] <IPNetwork>] [[-Ip2] <IPNetwork>]
+Test-IpInSameSameNetwork [[-Ip1] <IPNetwork>] [[-Ip2] <IPNetwork>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,9 @@ Checks if both IPs are in the same network.
 ## PARAMETERS
 
 ### -Ip1
-The reference IP. Can be an entire network object or an IP in the CIDR notation, e.g. 192.168.2.12/24
+The reference IP.
+Can be an entire network object or an IP in the CIDR notation, e.g.
+192.168.2.12/24
 
 ```yaml
 Type: IPNetwork
@@ -46,7 +48,9 @@ Accept wildcard characters: False
 ```
 
 ### -Ip2
-The difference IP. Can be an entire network object or an IP in the CIDR notation, e.g. 192.168.2.12/24
+The difference IP.
+Can be an entire network object or an IP in the CIDR notation, e.g.
+192.168.2.12/24
 
 ```yaml
 Type: IPNetwork
@@ -60,13 +64,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+

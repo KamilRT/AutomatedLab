@@ -1,7 +1,7 @@
 ---
 external help file: AutomatedLab.Recipe-help.xml
 Module Name: AutomatedLab.Recipe
-online version:
+online version: https://automatedlab.org/en/latest/AutomatedLab.Recipe/en-us/Invoke-LabRecipe
 schema: 2.0.0
 ---
 
@@ -27,8 +27,8 @@ Invoke-LabRecipe -Recipe <Object> [-DefaultVirtualizationEngine <String>] [-LabC
 ```
 
 ## DESCRIPTION
-Invoke a recipe. Can either export the recipe as a normal script file or directly deploy the lab that
-the recipe describes.
+Invoke a recipe.
+Can either export the recipe as a normal script file or directly deploy the lab that the recipe describes.
 
 ## EXAMPLES
 
@@ -42,21 +42,6 @@ LabRecipe SuperEasy {
 Instead of invoking the recipe, stores it as D:\SuperEasy.ps1
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultAddressSpace
 Override the default address space of the recipe
@@ -159,7 +144,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -189,7 +174,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,6 +194,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -220,7 +220,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -231,12 +231,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-
 ### System.Object
-
 ## OUTPUTS
 
 ### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
