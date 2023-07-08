@@ -54,8 +54,8 @@ function Update-CMSite {
     #endregion
 
     #region Check $Version
-    if ($Version -eq "2103") {
-        Write-ScreenInfo -Message "Target verison is 2103, skipping updates"
+    if ($Version -eq "2203") {
+        Write-ScreenInfo -Message "Target version is 2203, skipping updates"
         return
     }
     #endregion
